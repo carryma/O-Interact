@@ -15,7 +15,6 @@ public class JerseyDemo {
         return "Hello,I am text!";
     }
 
-
     @POST
     @Produces(MediaType.TEXT_XML)
     public String sayXMLHello() {
