@@ -55,7 +55,7 @@ public class UserController {
         User user = userService.findUserById(id);
         return Response.ok(user).build();
     }
-    
+
 
 }
 
