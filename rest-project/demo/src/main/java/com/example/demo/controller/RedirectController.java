@@ -3,10 +3,13 @@ package com.example.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.entity.WeChatUser;
+import com.example.demo.service.WeChatUserService;
 import com.example.demo.util.HttpsUtil;
 import com.example.demo.util.UserInfoUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +27,9 @@ public class RedirectController {
 
     public static final String WX_APPID = "wxe634435c58769578";
     public static final String WX_APPSECRET = "9cbe7b9611a722b87980ca9d8022627f";
+
+    @Autowired
+    WeChatUserService weChatUserService;
 
 
     /**
@@ -52,10 +58,16 @@ public class RedirectController {
             String CODE = code;
             String WebAccessToken;
             String openId;
-            String nickName, sex, openid;
+            String openid;
+            String nickName;
+            String headImage;
+            String sex;
+            String country;
+            String province;
+            String city;
             String REDIRECT_URI = "http://www.kanma.ngrok.xiaomiqiu.cn/url";
             String SCOPE = "snsapi_userinfo";
-           // String SCOPE = "snsapi_base";
+            // String SCOPE = "snsapi_base";
 
             String getCodeUrl = UserInfoUtil.getCode(APPID, REDIRECT_URI, SCOPE);
             logger.info("第一步:用户授权, get Code URL:{}", getCodeUrl);
@@ -114,14 +126,35 @@ public class RedirectController {
 
                     if (userMessageJsonObject != null) {
                         try {
-                            //用户昵称
-                            nickName = userMessageJsonObject.getString("nickname");
-                            //用户性别
-                            sex = userMessageJsonObject.getString("sex");
-                            sex = (sex.equals("1")) ? "男" : "女";
-                            //用户唯一标识
+                            // openid, nickName, headImage, sex, country, province, city;
+                            //1用户唯一标识
                             openid = userMessageJsonObject.getString("openid");
+                            //2用户昵称
+                            nickName = userMessageJsonObject.getString("nickname");
+                            //3headImage
+                            headImage = userMessageJsonObject.getString("headimgurl");
+                            //4用户性别
+                            sex = userMessageJsonObject.getString("sex");
+                            //sex = (sex.equals("1")) ? "男" : "女";
+                            //5country
+                            country = userMessageJsonObject.getString("country");
+                            //6province
+                            province = userMessageJsonObject.getString("province");
+                            //7city
+                            city = userMessageJsonObject.getString("city");
 
+                            WeChatUser weChatUser = new WeChatUser();
+                            weChatUser.setOpenId(openid);
+                            weChatUser.setNickname(nickName);
+                            weChatUser.setHeadImg(headImage);
+                            weChatUser.setSex(sex);
+                            weChatUser.setCountry(country);
+                            weChatUser.setProvince(province);
+                            weChatUser.setCity(city);
+
+                            weChatUserService.insertWeChatUser(weChatUser);
+
+                            logger.info("插入微信用户信息数据成功");
                             logger.info("用户昵称:{}", nickName);
                             logger.info("用户性别:{}", sex);
                             logger.info("OpenId:{}", openid);
