@@ -1,0 +1,32 @@
+<!--
+ Copyright (c) 2014, 2018, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div id="form-container" class="oj-form-layout">
+  <oj-button id='back' on-click='[[goBack]]'>
+		<span slot="startIcon" class="oj-fwk-icon oj-fwk-icon-caret-start"></span>
+		<span>Back</span>
+	</oj-button>
+  <oj-button id='cust' on-click='[[goCust]]'>
+		<span>Go to Customer List</span>
+	</oj-button> 
+  <div class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline"
+       data-bind="with: order">
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <oj-label for="id" show-required=true>Id</oj-label>
+      </div>
+      <div class="oj-flex-item">
+        <oj-input-text id="id" value="{{id}}" required=true></oj-input-text>
+      </div>
+    </div>
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <oj-label for="name">Name</oj-label>
+      </div>
+      <div class="oj-flex-item">
+        <oj-input-text id="name" value="{{name}}"></oj-input-text>
+      </div>
+    </div>
+  </div>
+</div>

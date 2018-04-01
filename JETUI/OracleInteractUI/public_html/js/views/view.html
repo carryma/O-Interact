@@ -1,0 +1,40 @@
+<!--
+ Copyright (c) 2014, 2018, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div id="form-container" class="oj-form-layout">
+  <oj-button id='back' on-click='[[goBack]]'>
+		<span slot="startIcon" class="oj-fwk-icon oj-fwk-icon-caret-start"></span>
+		<span>Back</span>
+	</oj-button>
+  <div class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline"
+       data-bind="with: cust">
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <oj-label id="nameLbl" for="name" show-required=true>Name</oj-label>
+      </div>
+      <div class="oj-flex-item">
+        <oj-input-text id="name" value="{{name}}" required=true></oj-input-text>
+      </div>
+    </div>
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <oj-label for="job">Market</oj-label>
+      </div>
+      <div class="oj-flex-item">
+        <oj-input-text id="job" value="{{market}}"></oj-input-text>
+      </div>
+    </div>
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <oj-label  for="sal">Sales</oj-label>
+      </div>
+      <div class="oj-flex-item">
+        <oj-input-text id="sal" value="{{sales}}"></oj-input-text>
+      </div>
+    </div>
+  </div>
+  <oj-button id='ordersBtn' on-click='[[gotoOrders]]'>
+		<span>Show Orders</span>
+	</oj-button>
+</div>

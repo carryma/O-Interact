@@ -1,0 +1,20 @@
+<!--
+ Copyright (c) 2014, 2018, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="oj-flex oj-flex-items-pad">
+  <div class="oj-xl-9 oj-lg-9 oj-md-9 oj-sm-12 oj-flex-item">
+    <div role="main" class="oj-panel demo-page-content-area">
+      <h2 data-bind="text: title"></h2>
+      <!-- ko foreach: description -->
+      <p data-bind="text: line"></p>
+      <!-- /ko -->
+  </div>
+  </div>
+  <div class="oj-xl-3 oj-lg-3 oj-md-3 oj-sm-12 oj-flex-item">
+    <div class="oj-panel oj-panel-alt2 demo-page-content-area">
+      <p>Click on the navigation buttons to switch which component is displayed in this page. </p>
+	  <p>To enter the Admin page, you must turn on the switch that says you are the Admin. This is an example of the canEnter method and is defined in the router configuration.</p>
+    </div>
+  </div>
+</div>
