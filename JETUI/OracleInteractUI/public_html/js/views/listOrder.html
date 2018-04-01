@@ -1,0 +1,40 @@
+<!--
+ Copyright (c) 2014, 2018, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div>
+  <oj-button id='back' on-click='[[goBack]]'>
+		<span slot="startIcon" class="oj-fwk-icon oj-fwk-icon-caret-start"></span>
+		<span>Back</span>	
+	</oj-button>
+  <oj-button id='cust' on-click='[[goCust]]'>
+		<span>Go to Customer List</span>	
+	</oj-button>
+  <oj-list-view id="listview" aria-label="list of customer orders" 
+        data="[[dataSource]]" 
+        item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('order-template', true)]]" 
+        selection-mode="single" 
+        on-selection-changed="[[gotoContent]]">
+  </oj-list-view>                               
+
+</div>
+
+<!-- Template to display a record -->
+<script type="text/html" id="order-template">
+  <li data-bind="attr: {id: $data['name']}">
+    <div>
+      <div class="oj-flex oj-flex-items-pad row">
+        <div class="oj-flex-item">
+          <span class="header" data-bind="text: $data['name']"></span>
+        </div>
+      </div>
+      <div class="oj-flex oj-flex-items-pad row">
+        <div class="oj-lg-4 oj-sm-12 oj-flex-item">
+          <span class="data">
+            <b>Id: </b><span data-bind="text: $data['id']"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </li>
+</script>

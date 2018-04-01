@@ -1,0 +1,12 @@
+#### dependencies
+    "es6-promise": "4.0.5",
+    "hammerjs": "2.0.8",
+    "jquery": "3.1.1",
+    "jquery-ui": "1.12.0",
+    "signals": "1.0.0",
+    "knockout": "3.4.0",
+    "requirejs": "2.3.3",
+    "requirejs-text": "2.0.15",
+    "@webcomponents/custom-elements": "1.0.0",
+    "proj4": "2.3.14",
+    "require-css": "0.1.8"
