@@ -2,12 +2,12 @@
   "name": "@oracle/oraclejet",
   "version": "4.2.0",
   "license": "UPL-1.0",
-  "description": "Oracle JavaScript Extension Toolkit (JET) empowers developers by providing a modular open source toolkit based on modern JavaScript, CSS3 and HTML5 design and development principles.",
+  "description": "Oracle JET 4.2.0.",
   "keywords": [
     "oraclejet"
   ],
   "dependencies": {
-    "@oracle/oraclejet": "4.2.0"
+    "@oracle/oraclejet": "http://artifactory-slc.oraclecorp.com/artifactory/ojet-release-local/com/oracle/oraclejet/oracle-oraclejet/4.2.0-41239/oracle-oraclejet-4.2.0-41239.tgz"
   },
   "files": [
     "dist"
