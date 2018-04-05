@@ -18,7 +18,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                 self.router = oj.Router.rootInstance;
                 self.router.configure({
                     'dashboard': {label: 'Dashboard'},
-                    'incidents': {label: 'Incidents'},
+                    'chat': {label: 'Chat'},
                     'customers': {label: 'Customers'},
                     'about': {label: 'About'},
                     'login': {label: 'Login', isDefault: true}

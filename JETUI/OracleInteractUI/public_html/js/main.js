@@ -23,7 +23,8 @@ function getPaths() {
         customElements: npm + '/@webcomponents/custom-elements/custom-elements.min',
         signals: npm + '/signals/dist/signals.min',
         knockout: npm + '/knockout/build/output/knockout-latest',
-        text: npm + '/requirejs-text/text'
+        text: npm + '/requirejs-text/text',
+		socketioclient : npm + '/socket.io-client/dist/socket.io'
     };
     return paths;
 }

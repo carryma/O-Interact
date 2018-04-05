@@ -7,6 +7,11 @@
  */
 define(['ojs/ojcore', 'knockout', 'jquery'],
  function(oj, ko, $) {
+	 var self = this ;
+	 self.toChatRoom = function(){
+
+		 window.location.href = "http://localhost:8383/public_html/index.html?root=chat";
+		 }
   
     function CustomerViewModel() {
       var self = this;
