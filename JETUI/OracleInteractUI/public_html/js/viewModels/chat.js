@@ -7,7 +7,7 @@
 /**
  * chat module
  */
-define(['ojs/ojcore', 'knockout','jquery','socketioclient'
+define(['ojs/ojcore', 'knockout','jquery','socket.io'
 ], function (oj, ko,$,io) {
 	/**
 	 * The view model for the main content view template
@@ -70,7 +70,7 @@ define(['ojs/ojcore', 'knockout','jquery','socketioclient'
 			/*退出群聊提示*/
 			socket.on('leave', function (name) {
 				if (name !== null) {
-					var html = '<p>FBI warning:' + name + '已退出群聊</p>';
+					var html = '<p>' + name + '已退出群聊</p>';
 					$('.chat-con').append(html);
 				}
 			});

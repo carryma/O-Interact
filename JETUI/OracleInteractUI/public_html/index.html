@@ -1,4 +1,4 @@
-<html lang="en-us">
+<html>
     <head>
         <title>Oracle Interact</title>
         <meta charset="UTF-8">
@@ -6,6 +6,7 @@
         <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
         <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/chat.css" type="text/css"/>
         <link href="css/signin.css" rel="stylesheet">
         <!-- This is the main css file for the default Alta theme -->
         <!-- injector:theme -->
@@ -13,8 +14,6 @@
         <!-- This contains icon fonts used by the starter template -->
         <link rel="stylesheet" href="css/demo-alta-site-min.css" type="text/css"/>
 
-        <!-- This is where you would add any app specific styling -->
-        <link rel="stylesheet" href="css/chat.css" type="text/css"/>
 
     </head>
 
@@ -25,7 +24,7 @@
                 <span data-bind="css: $data['iconClass']"></span>
                 <!-- ko text: $data['name'] --> <!--/ko-->
             </a></li>
-    </script>
+	</script>
 
     <div id="globalBody" class="oj-web-applayout-page">
 
@@ -86,10 +85,11 @@
         </footer>
     </div>
 
-    <script type="text/javascript" src="https://static.oracle.com/cdn/jet/v4.2.0/3rdparty/require/require.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="node_modules/requirejs/require.js" data-main="js/main" ></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+	<!--<script type="text/javascript" src="/socket.io/socket.io.js"></script>-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    <!--<script type="text/javascript" src="js/main.js"></script> -->
 
 </body>
 
