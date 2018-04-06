@@ -10,7 +10,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 	 var self = this ;
 	 self.toChatRoom = function(){
 
-		 window.location.href = "http://localhost:8382/index.html?root=chat";
+		 window.location.href = "http://www.kanma.ngrok.xiaomiqiu.cn/index.html?root=chat";
 		 }
   
     function CustomerViewModel() {
