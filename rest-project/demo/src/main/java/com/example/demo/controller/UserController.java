@@ -88,7 +88,7 @@ public class UserController {
      * 根据id更新user实体
      *
      * @param id user id
-     * @param RequestBody user name lebel
+     * @param updateUser user name lebel
      * @return res
      */
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)

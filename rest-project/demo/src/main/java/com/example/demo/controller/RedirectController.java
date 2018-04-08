@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 用户扫描二维码 同意授权后 要跳转到的URL
  *
@@ -25,8 +28,8 @@ public class RedirectController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    public static final String WX_APPID = "wxe634435c58769578";
-    public static final String WX_APPSECRET = "9cbe7b9611a722b87980ca9d8022627f";
+    private static final String WX_APPID = "wxe634435c58769578";
+    private static final String WX_APPSECRET = "9cbe7b9611a722b87980ca9d8022627f";
 
     @Autowired
     WeChatUserService weChatUserService;
@@ -40,11 +43,11 @@ public class RedirectController {
      *
      * @param code  用户同意授权后,获取到的code
      * @param state 重定向状态参数
-     * @return
+     * @return String
      */
     @GetMapping("/url")
-    public String wecahtLogin(@RequestParam(name = "code", required = false) String code,
-                              @RequestParam(name = "state") String state) {
+    public void wecahtLogin(@RequestParam(name = "code", required = false) String code,
+                            @RequestParam(name = "state") String state, HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
         // 1. 用户同意授权,获取code
         logger.info("收到微信重定向跳转.");
@@ -158,6 +161,9 @@ public class RedirectController {
                             logger.info("用户昵称:{}", nickName);
                             logger.info("用户性别:{}", sex);
                             logger.info("OpenId:{}", openid);
+
+                           // HttpServletResponse httpServletResponse = new HttpServletResponse();
+                           // httpServletResponse.sendRedirect("https://www.baidu.com/");
                         } catch (JSONException e) {
                             logger.error("获取用户信息失败");
                         }
@@ -167,6 +173,7 @@ public class RedirectController {
                 }
             }
         }
-        return "登录成功";
+        logger.info("访问聊天界面");
+        resp.sendRedirect("http://www.kanmaui.ngrok.xiaomiqiu.cn/index.html?root=chat");
     }
 }
