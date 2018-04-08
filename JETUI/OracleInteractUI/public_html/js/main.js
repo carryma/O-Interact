@@ -11,7 +11,7 @@
 function getPaths() {
     var npm = '../node_modules';
     var paths = {
-        jquery: npm + '/jquery/dist/jquery.min',
+		jquery : npm + '/jquery/dist/jquery.js',
         'jqueryui-amd': npm + '/jquery-ui/ui',
         promise: npm + '/es6-promise/dist/es6-promise',
         hammerjs: npm + '/hammerjs/hammer',
@@ -23,14 +23,13 @@ function getPaths() {
         customElements: npm + '/@webcomponents/custom-elements/custom-elements.min',
         signals: npm + '/signals/dist/signals.min',
         knockout: npm + '/knockout/build/output/knockout-latest',
-        text: npm + '/requirejs-text/text',
-		socketioclient : npm + '/socket.io-client/dist/socket.io'
+        text: npm + '/requirejs-text/text'
+		//socketioclient : npm + '/socket.io-client/dist/socket.io'
     };
     return paths;
 }
 requirejs.config(
         {
-            baseUrl: 'js',
 
             // Path mappings for the logical module names
             // Update the main-release-paths.json for release mode when updating the mappings
@@ -52,9 +51,9 @@ requirejs.config(
  * by the modules themselves), we are listing them explicitly to get the references to the 'oj' and 'ko'
  * objects in the callback
  */
-require(['ojs/ojcore', 'knockout', 'appController', 'ojs/ojknockout',
+require(['ojs/ojcore', 'knockout', 'appController', 'jquery','ojs/ojknockout',
     'ojs/ojmodule', 'ojs/ojrouter', 'ojs/ojnavigationlist', 'ojs/ojbutton', 'ojs/ojtoolbar'],
-        function (oj, ko, app) { // this callback gets executed when all required modules are loaded
+        function (oj, ko, app,$) { // this callback gets executed when all required modules are loaded
 
             $(function () {
 
