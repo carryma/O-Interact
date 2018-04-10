@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /**
  * 用户扫描二维码 同意授权后 要跳转到的URL
@@ -30,6 +31,7 @@ public class RedirectController {
 
     private static final String WX_APPID = "wxe634435c58769578";
     private static final String WX_APPSECRET = "9cbe7b9611a722b87980ca9d8022627f";
+    private String frontUrl;
 
     @Autowired
     WeChatUserService weChatUserService;
@@ -132,6 +134,7 @@ public class RedirectController {
                             // openid, nickName, headImage, sex, country, province, city;
                             //1用户唯一标识
                             openid = userMessageJsonObject.getString("openid");
+                            frontUrl = "http://www.kanmaui.ngrok.xiaomiqiu.cn/index.html?root=chat" + "&id=" + openid;
                             //2用户昵称
                             nickName = userMessageJsonObject.getString("nickname");
                             //3headImage
@@ -146,24 +149,32 @@ public class RedirectController {
                             //7city
                             city = userMessageJsonObject.getString("city");
 
-                            WeChatUser weChatUser = new WeChatUser();
-                            weChatUser.setOpenId(openid);
-                            weChatUser.setNickname(nickName);
-                            weChatUser.setHeadImg(headImage);
-                            weChatUser.setSex(sex);
-                            weChatUser.setCountry(country);
-                            weChatUser.setProvince(province);
-                            weChatUser.setCity(city);
+                            if (null != weChatUserService.findWeChatUserId(openid)) {
+                                logger.info("微信用户信息已存在");
 
-                            weChatUserService.insertWeChatUser(weChatUser);
+                            } else {
+                                WeChatUser weChatUser = new WeChatUser();
+                                weChatUser.setOpenId(openid);
+                                weChatUser.setNickname(nickName);
+                                weChatUser.setHeadImg(headImage);
+                                weChatUser.setSex(sex);
+                                weChatUser.setCountry(country);
+                                weChatUser.setProvince(province);
+                                weChatUser.setCity(city);
+                                ArrayList<String> list = new ArrayList<>();
+                                if (!list.contains(openid)) {
+                                    list.add(openid);
+                                    weChatUserService.insertWeChatUser(weChatUser);
 
-                            logger.info("插入微信用户信息数据成功");
-                            logger.info("用户昵称:{}", nickName);
-                            logger.info("用户性别:{}", sex);
-                            logger.info("OpenId:{}", openid);
 
-                           // HttpServletResponse httpServletResponse = new HttpServletResponse();
-                           // httpServletResponse.sendRedirect("https://www.baidu.com/");
+                                    logger.info("插入微信用户信息数据成功");
+                                    logger.info("用户昵称:{}", nickName);
+                                    logger.info("用户性别:{}", sex);
+                                    logger.info("OpenId:{}", openid);
+                                }
+
+                            }
+
                         } catch (JSONException e) {
                             logger.error("获取用户信息失败");
                         }
@@ -173,7 +184,10 @@ public class RedirectController {
                 }
             }
         }
+        // frontUrl = "http://www.kanmaui.ngrok.xiaomiqiu.cn/index.html?root=chat"+ "id=" + openId;
         logger.info("访问聊天界面");
-        resp.sendRedirect("http://www.kanmaui.ngrok.xiaomiqiu.cn/index.html?root=chat");
+        logger.info("跳转的前端地址:{}", frontUrl);
+        resp.sendRedirect(frontUrl);
+
     }
 }

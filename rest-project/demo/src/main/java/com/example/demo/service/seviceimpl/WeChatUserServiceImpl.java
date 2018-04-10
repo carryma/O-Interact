@@ -23,4 +23,9 @@ public class WeChatUserServiceImpl implements WeChatUserService {
     public int insertWeChatUser(WeChatUser weChatUser) {
         return weChatUserDao.insertWeChatUser(weChatUser);
     }
+
+    @Override
+    public String findWeChatUserId(String weChatOpenId) {
+        return weChatUserDao.findWeChatUserId(weChatOpenId);
+    }
 }

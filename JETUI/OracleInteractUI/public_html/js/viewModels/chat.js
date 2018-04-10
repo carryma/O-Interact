@@ -7,12 +7,33 @@
 /**
  * chat module
  */
-define(['ojs/ojcore', 'knockout','jquery','socket.io'
-], function (oj, ko,$,io) {
+define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io'
+], function (oj, ko, $, io) {
 	/**
 	 * The view model for the main content view template
 	 */
 	function chatContentViewModel() {
+		var self = this;
+		
+		function getParameterByName(paramName) {
+			var args = new Object();
+			var argsStr = location.search;  //获取URL参数字符串
+			if (argsStr.length > 0) {
+				argsStr = argsStr.substring(1);
+				var nameValueArr = argsStr.split("&");  //多参数
+				for (var i = 0; i < nameValueArr.length; i++) {
+					var pos = nameValueArr[i].indexOf('=');
+					if (pos === -1)
+						continue; //如果没有找到就跳过
+					var argName = nameValueArr[i].substring(0, pos); //提取name
+					var argVal = nameValueArr[i].substring(pos + 1); //提取value
+					args[argName] = unescape(argVal);
+				}
+				return args[paramName];
+			}
+		}
+		alert(getParameterByName("id"));
+
 		//var self = this;
 		$(function () {
 			/*建立socket连接，使用websocket协议，端口号是服务器端监听端口号*/
