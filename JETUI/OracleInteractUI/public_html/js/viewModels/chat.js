@@ -35,19 +35,25 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 		var self = this;
 		self.nickname = ko.observable();
 		self.headimage = ko.observable();
-		$.ajaxSetup({ async: false });
-		//var url = "http://localhost:8081/userinfo/" + getParameterByName("id");		
-		var getUrl = "http://www.kanma.tunnel.echomod.cn/userinfo/" + getParameterByName("id");
-		//$.getUrl()跨域问题的解决
-		$.getJSON(
-			"http://eezzo.com/API/CD",
-			{ url: encodeURI(getUrl) },
-			//{id:getParameterByName("id")},
-			function (data) {
-				self.nickname(data.nickname);
-				self.headimage(data.headImg);
-			}
-		);
+		//alert(getParameterByName("id"));
+		if (getParameterByName("id") === undefined) {
+			self.nickname("Administrator");
+			self.headimage("http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132");
+		} else {
+			$.ajaxSetup({ async: false });
+			//var url = "http://localhost:8081/userinfo/" + getParameterByName("id");		
+			var getUrl = "http://www.kanma.tunnel.echomod.cn/userinfo/" + getParameterByName("id");
+			//$.getUrl()跨域问题的解决
+			$.getJSON(
+				"http://eezzo.com/API/CD",
+				{ url: encodeURI(getUrl) },
+				//{id:getParameterByName("id")},
+				function (data) {
+					self.nickname(data.nickname);
+					self.headimage(data.headImg);
+				}
+			);
+		}
 		//alert(self.nickname());
 		$(function () {
 			/*建立socket连接，使用websocket协议，端口号是服务器端监听端口号*/
