@@ -101,7 +101,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 
 			/*新人加入提示*/
 			socket.on('add', function (data) {
-				var html = '<p>系统消息:' + data.username + '已加入群聊</p>';
+				var html = '<p>系统消息:' + data.username + '已加入群聊</p>'+'<br/>';
 				$('.chat-con').append(html);
 			});
 
@@ -113,7 +113,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			/*退出群聊提示*/
 			socket.on('leave', function (name) {
 				if (name !== null) {
-					var html = '<p>' + name + '已退出群聊</p>';
+					var html = '<p>' + name + '已退出群聊</p>'+'<br/>';
 					$('.chat-con').append(html);
 				}
 			});
