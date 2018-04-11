@@ -36,6 +36,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 		self.nickname = ko.observable();
 		self.headimage = ko.observable();
 		//alert(getParameterByName("id"));
+		
+		/*电脑用户获取"Administrator",微信用户自动使用昵称和头像登陆*/
 		if (getParameterByName("id") === undefined) {
 			self.nickname("Administrator");
 			self.headimage("http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132");
