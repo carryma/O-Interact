@@ -7,13 +7,54 @@
 /**
  * chat module
  */
-define(['ojs/ojcore', 'knockout','jquery','socket.io'
-], function (oj, ko,$,io) {
+define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/ojinputtext', 'ojs/ojlabel'
+], function (oj, ko, $, io) {
 	/**
 	 * The view model for the main content view template
 	 */
 	function chatContentViewModel() {
-		//var self = this;
+
+		function getParameterByName(paramName) {
+			var args = new Object();
+			var argsStr = location.search;  //获取URL参数字符串
+			if (argsStr.length > 0) {
+				argsStr = argsStr.substring(1);
+				var nameValueArr = argsStr.split("&");  //多参数
+				for (var i = 0; i < nameValueArr.length; i++) {
+					var pos = nameValueArr[i].indexOf('=');
+					if (pos === -1)
+						continue; //如果没有找到就跳过
+					var argName = nameValueArr[i].substring(0, pos); //提取name
+					var argVal = nameValueArr[i].substring(pos + 1); //提取value
+					args[argName] = unescape(argVal);
+				}
+				return args[paramName];
+			}
+		}
+		//alert(getParameterByName("id"));
+		var self = this;
+		self.nickname = ko.observable();
+		self.headimage = ko.observable();
+		//alert(getParameterByName("id"));
+		if (getParameterByName("id") === undefined) {
+			self.nickname("Administrator");
+			self.headimage("http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132");
+		} else {
+			$.ajaxSetup({ async: false });
+			//var url = "http://localhost:8081/userinfo/" + getParameterByName("id");		
+			var getUrl = "http://www.kanma.tunnel.echomod.cn/userinfo/" + getParameterByName("id");
+			//$.getUrl()跨域问题的解决
+			$.getJSON(
+				"http://eezzo.com/API/CD",
+				{ url: encodeURI(getUrl) },
+				//{id:getParameterByName("id")},
+				function (data) {
+					self.nickname(data.nickname);
+					self.headimage(data.headImg);
+				}
+			);
+		}
+		//alert(self.nickname());
 		$(function () {
 			/*建立socket连接，使用websocket协议，端口号是服务器端监听端口号*/
 			//var socket = io('ws://localhost:8081');
@@ -26,7 +67,7 @@ define(['ojs/ojcore', 'knockout','jquery','socket.io'
 				uname = $.trim($('#loginName').val());
 				if (uname) {
 					/*向服务端发送登录事件*/
-					socket.emit('login', {username: uname});
+					socket.emit('login', { username: uname });
 				} else {
 					alert('请输入昵称');
 				}
@@ -86,7 +127,7 @@ define(['ojs/ojcore', 'knockout','jquery','socket.io'
 				var txt = $('#sendtxt').val();
 				$('#sendtxt').val('');
 				if (txt) {
-					socket.emit('sendMessage', {username: uname, message: txt});
+					socket.emit('sendMessage', { username: uname, message: txt });
 				}
 			}
 

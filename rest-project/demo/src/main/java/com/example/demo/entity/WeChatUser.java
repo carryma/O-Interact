@@ -24,10 +24,10 @@ public class WeChatUser {
     // 用户所在城市
     private String city;
     // 用户关注时间，为时间戳。如果用户曾多次关注，则取最后关注时间
-    private Date createTime;
+    //private Date createTime;
 
     public WeChatUser() {
-        createTime = new Date();
+        /*createTime = new Date();*/
     }
 
     public String getOpenId() {
@@ -86,7 +86,20 @@ public class WeChatUser {
         this.city = city;
     }
 
-    public Date getCreateTime() {
+/*    public Date getCreateTime() {
         return createTime;
+    }*/
+
+    @Override
+    public String toString() {
+        return "WeChatUser{" +
+                "openId='" + openId + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", headImg='" + headImg + '\'' +
+                ", sex='" + sex + '\'' +
+                ", country='" + country + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

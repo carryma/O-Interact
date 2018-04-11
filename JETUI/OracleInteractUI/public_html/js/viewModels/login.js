@@ -4,11 +4,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
         self.submitInput = function () {
             var userName = $("#username").val();
             if (userName !== null && userName === "kanma") {
-				// window.location.href = "http://localhost:3000/js/views/customers.html";
-               // window.location.href = "http://localhost:8382/index.html?root=customers";
-				window.location.href = "http://www.kanma.ngrok.xiaomiqiu.cn/index.html?root=customers";
-                //$(location).attr('href',"");
-                //window.location.replace("");
+              window.location.href = "http://localhost:8081/index.html?root=customers";
+			  //window.location.href = "http://www.kanmaui.tunnel.echomod.cn/index.html?root=customers";
             } else {
                 $("#mymodal").modal("toggle");
                 // $.getJSON("http://localhost:8080/user/1", function (result) {

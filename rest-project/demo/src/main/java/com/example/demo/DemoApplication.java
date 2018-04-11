@@ -9,7 +9,7 @@ import static com.example.demo.util.UserInfoUtil.getCode;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		String REDIRECT_URI = "http://www.kanma.ngrok.xiaomiqiu.cn/url";
+		String REDIRECT_URI = "http://www.kanma.tunnel.echomod.cn/url";
 		//String SCOPE = "snsapi_base"; // snsapi_userinfo // snsapi_base
 		String SCOPE = "snsapi_userinfo";
 		//appId
