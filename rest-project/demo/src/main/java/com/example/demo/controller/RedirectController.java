@@ -70,7 +70,8 @@ public class RedirectController {
             String country;
             String province;
             String city;
-            String REDIRECT_URI = "http://www.kanma.ngrok.xiaomiqiu.cn/url";
+           // String REDIRECT_URI = "http://www.kanma.ngrok.xiaomiqiu.cn/url";
+            String REDIRECT_URI = "http://www.kanma.tunnel.echomod.cn/url";
             String SCOPE = "snsapi_userinfo";
             // String SCOPE = "snsapi_base";
 
@@ -134,7 +135,7 @@ public class RedirectController {
                             // openid, nickName, headImage, sex, country, province, city;
                             //1用户唯一标识
                             openid = userMessageJsonObject.getString("openid");
-                            frontUrl = "http://www.kanmaui.ngrok.xiaomiqiu.cn/index.html?root=chat" + "&id=" + openid;
+                            frontUrl = "http://www.kanmaui.tunnel.echomod.cn/index.html?root=chat" + "&id=" + openid;
                             //2用户昵称
                             nickName = userMessageJsonObject.getString("nickname");
                             //3headImage

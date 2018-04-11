@@ -6,7 +6,7 @@ var app = express();
 //var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8081;
 
 app.get('/index.html', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -74,7 +74,7 @@ io.on('connection', function (socket) {
 });
 
 http.listen(port, function(){
-  console.log('listening on *: ' + port + "    http://localhost:8080/index.html");
+  console.log('listening on *: ' + port + "    http://localhost:8081/index.html");
 });
 
 //console.log('app listen at: '+PORT);

@@ -7,14 +7,13 @@
 /**
  * chat module
  */
-define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io'
+define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/ojinputtext', 'ojs/ojlabel'
 ], function (oj, ko, $, io) {
 	/**
 	 * The view model for the main content view template
 	 */
 	function chatContentViewModel() {
-		var self = this;
-		
+
 		function getParameterByName(paramName) {
 			var args = new Object();
 			var argsStr = location.search;  //获取URL参数字符串
@@ -32,9 +31,24 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io'
 				return args[paramName];
 			}
 		}
-		alert(getParameterByName("id"));
-
-		//var self = this;
+		//alert(getParameterByName("id"));
+		var self = this;
+		self.nickname = ko.observable();
+		self.headimage = ko.observable();
+		$.ajaxSetup({ async: false });
+		//var url = "http://localhost:8081/userinfo/" + getParameterByName("id");		
+		var getUrl = "http://www.kanma.tunnel.echomod.cn/userinfo/" + getParameterByName("id");
+		//$.getUrl()跨域问题的解决
+		$.getJSON(
+			"http://eezzo.com/API/CD",
+			{ url: encodeURI(getUrl) },
+			//{id:getParameterByName("id")},
+			function (data) {
+				self.nickname(data.nickname);
+				self.headimage(data.headImg);
+			}
+		);
+		//alert(self.nickname());
 		$(function () {
 			/*建立socket连接，使用websocket协议，端口号是服务器端监听端口号*/
 			//var socket = io('ws://localhost:8081');
@@ -47,7 +61,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io'
 				uname = $.trim($('#loginName').val());
 				if (uname) {
 					/*向服务端发送登录事件*/
-					socket.emit('login', {username: uname});
+					socket.emit('login', { username: uname });
 				} else {
 					alert('请输入昵称');
 				}
@@ -107,7 +121,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io'
 				var txt = $('#sendtxt').val();
 				$('#sendtxt').val('');
 				if (txt) {
-					socket.emit('sendMessage', {username: uname, message: txt});
+					socket.emit('sendMessage', { username: uname, message: txt });
 				}
 			}
 

@@ -12,4 +12,5 @@ import com.example.demo.entity.WeChatUser;
 public interface WeChatUserService {
     int insertWeChatUser(WeChatUser weChatUser);
     String findWeChatUserId(String weChatOpenId);
+    WeChatUser findWechatUserByOpenId(String weChatOpenId);
 }

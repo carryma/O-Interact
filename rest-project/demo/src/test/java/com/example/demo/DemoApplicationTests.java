@@ -16,7 +16,8 @@ public class DemoApplicationTests {
 
 
     @Test
-    public void contextLoads() {
+    public void queryWeChatUserByOpenId() {
+        System.out.println( weChatUserService.findWechatUserByOpenId("oJdcO1fOnBFdl2FkSn61NNlKUPJs"));
     }
 
     @Test

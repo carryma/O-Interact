@@ -28,4 +28,10 @@ public class WeChatUserServiceImpl implements WeChatUserService {
     public String findWeChatUserId(String weChatOpenId) {
         return weChatUserDao.findWeChatUserId(weChatOpenId);
     }
+
+    @Override
+    public WeChatUser findWechatUserByOpenId(String weChatOpenId) {
+        return weChatUserDao.findWechatUserByOpenId(weChatOpenId);
+    }
+
 }
