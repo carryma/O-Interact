@@ -31,7 +31,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 				return args[paramName];
 			}
 		}
-		
+
 		var self = this;
 		self.nickname = ko.observable();
 		self.headimage = ko.observable();
@@ -101,7 +101,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 
 			/*新人加入提示*/
 			socket.on('add', function (data) {
-				var html = '<p>系统消息:' + data.username + '已加入群聊</p>'+'<br/>';
+				var html = '<p>系统消息:' + data.username + '已加入群聊</p>' + '<br>';
 				$('.chat-con').append(html);
 			});
 
@@ -113,7 +113,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			/*退出群聊提示*/
 			socket.on('leave', function (name) {
 				if (name !== null) {
-					var html = '<p>' + name + '已退出群聊</p>'+'<br/>';
+					var html = '<p>' + name + '已退出群聊</p>' + '<br>';
 					$('.chat-con').append(html);
 				}
 			});
@@ -137,14 +137,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			function showMessage(data) {
 				var html;
 				if (data.username === uname) {
-					html = '<div class="chat-item item-right clearfix"><span class="img fr"></span><span class="message fr">' + data.message + '</span></div>';
+					html = '<div class="chat-item item-right clearfix"><img id="msgImg" class="img fr" src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132"}"></img><span class="message fr">' + data.message + '</span></div>';
 				} else {
 					html = '<div class="chat-item item-left clearfix rela"><span class="abs uname">' + data.username + '</span><span class="img fl"></span><span class="fl message">' + data.message + '</span></div>';
 				}
 				$('.chat-con').append(html);
+				//alert($("#msgImg")[0].src);
+				alert($("#msgImg").attr('src',this.headimage()));;  
 			}
 
 		});
+
 
 	}
 

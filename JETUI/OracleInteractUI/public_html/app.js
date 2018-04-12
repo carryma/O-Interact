@@ -12,14 +12,11 @@ app.get('/index.html', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+/*静态资源部署 */
 app.use('/css',express.static("css"));
 app.use('/js',express.static("js"));
 app.use('/images',express.static("images"));
 app.use('/node_modules',express.static("node_modules"));
-//app.use(express.static('css'));
-//app.use(express.static('js'));
-//app.use(express.static('images'));
-//app.use(express.static(path.join(__dirname, 'css')));
 
 /*定义用户数组*/
 var users = [];

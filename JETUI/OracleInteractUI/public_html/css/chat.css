@@ -14,10 +14,12 @@
 
 /*登录界面*/
 .login-wrap{background:#e7e7e7;width:100%;height:100%; text-align:center;}
-.login-con{padding-top: 50px;}
+.login-con{padding-top: 100px;}
 .login-con h3{margin-bottom: 20px;}
-.login-con input{width:60%; display:block; margin:0 auto; height: 40px; line-height: 40px; margin-bottom: 20px;}
-.login-con button{width:60%;display:block; margin:0 auto; height: 40px; line-height:40px; border:none; background:#459d36; color:#fff; border-radius:5px;}
+.login-con input{padding:15px 0;width:30%;text-align: center; color:rgb(140, 0, 255);border: none;
+                 display:block; margin:20px auto; height: 40px; line-height: 40px; margin-bottom: 20px;
+                 background-color: antiquewhite;font-size:20px;font-family:serif;font-weight:900}
+.login-con button{width:30%;display:block; margin:0 auto; height: 40px; line-height:40px; border:none; background:#9d3658; color:#fff; border-radius:5px;}
 
 /*聊天界面*/
 .chat-wrap{width: 100%; height: 100%;overflow-y:scroll; background:#e7e7e7; text-align:center;}
@@ -32,4 +34,7 @@
 .item-left .img{margin-right:10px;}
 .item-left .uname{font-size:12px; left:50px; top:0;}
 .chat-item .message{width:60%;display:block; padding:10px;border-radius:5px; margin-right:10px;}
-.chat-item .img{display:inline-block; width:40px; height:40px; background:url(http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132) no-repeat; background-size:100% 100%;}
+/*.chat-item .img{display:inline-block; width:40px; height:40px; 
+    background:url(http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132) 
+    no-repeat; background-size:100% 100%;}*/
+.chat-item .img{ display:inline-block;width:40px; height:40px; background-size:100% 100%;}
