@@ -1,11 +1,11 @@
-body {
+.login-body {
     background:url(../images/login_bg_0.jpg) #f8f6e9 no-repeat;   
     background-size: cover;   
     -webkit-background-size: cover;   
     -moz-background-size: cover;   
     -o-background-size: cover; 
 }
-body{	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;}
+.login-body{	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;}
 
 .signin {
     width:477px;
