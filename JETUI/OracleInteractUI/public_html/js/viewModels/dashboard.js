@@ -6,72 +6,105 @@
  * Your dashboard ViewModel code goes here
  */
 define(['ojs/ojcore', 'knockout', 'jquery'],
- function(oj, ko, $) {
-  
-    function DashboardViewModel() {
+  function (oj, ko, $) {
+
+    this.zturn = function (turn) {
+      //function zturn(turn) {
+      //alert(turn);
       var self = this;
-      // Below are a subset of the ViewModel methods invoked by the ojModule binding
-      // Please reference the ojModule jsDoc for additional available methods.
-
-      /**
-       * Optional ViewModel method invoked when this ViewModel is about to be
-       * used for the View transition.  The application can put data fetch logic
-       * here that can return a Promise which will delay the handleAttached function
-       * call below until the Promise is resolved.
-       * @param {Object} info - An object with the following key-value pairs:
-       * @param {Node} info.element - DOM element or where the binding is attached. This may be a 'virtual' element (comment node).
-       * @param {Function} info.valueAccessor - The binding's value accessor.
-       * @return {Promise|undefined} - If the callback returns a Promise, the next phase (attaching DOM) will be delayed until
-       * the promise is resolved
-       */
-      self.handleActivated = function(info) {
-        // Implement if needed
-      };
-
-      /**
-       * Optional ViewModel method invoked after the View is inserted into the
-       * document DOM.  The application can put logic that requires the DOM being
-       * attached here.
-       * @param {Object} info - An object with the following key-value pairs:
-       * @param {Node} info.element - DOM element or where the binding is attached. This may be a 'virtual' element (comment node).
-       * @param {Function} info.valueAccessor - The binding's value accessor.
-       * @param {boolean} info.fromCache - A boolean indicating whether the module was retrieved from cache.
-       */
-      self.handleAttached = function(info) {
-        // Implement if needed
-      };
+      this.x = 1;
+      //锁定html页面中 id=zturn 的元素
+      var zturn = $("#" + turn.id);
+      //具有水平切换效果的item集合
+      this.zturnitem = zturn.children(".zturn-item");
+      //初始第一个 第一个是0
+      var X = this.x;
+      //水平切换特效的元素个数
+      var num_li = this.zturnitem.length;
+      //轮播元素个数 zturnPy为每个的偏移量
+      var zturnPy = turn.Awidth / (num_li - 1);
 
 
-      /**
-       * Optional ViewModel method invoked after the bindings are applied on this View. 
-       * If the current View is retrieved from cache, the bindings will not be re-applied
-       * and this callback will not be invoked.
-       * @param {Object} info - An object with the following key-value pairs:
-       * @param {Node} info.element - DOM element or where the binding is attached. This may be a 'virtual' element (comment node).
-       * @param {Function} info.valueAccessor - The binding's value accessor.
-       */
-      self.handleBindingsApplied = function(info) {
-        // Implement if needed
-      };
+      this.zturnitem.click(function () {
+        var zX = $(this).attr("data_n")
+        z_sort(turn, zX)
 
-      /*
-       * Optional ViewModel method invoked after the View is removed from the
-       * document DOM.
-       * @param {Object} info - An object with the following key-value pairs:
-       * @param {Node} info.element - DOM element or where the binding is attached. This may be a 'virtual' element (comment node).
-       * @param {Function} info.valueAccessor - The binding's value accessor.
-       * @param {Array} info.cachedNodes - An Array containing cached nodes for the View if the cache is enabled.
-       */
-      self.handleDetached = function(info) {
-        // Implement if needed
-      };
+      });
+
+
+      zturn.children(".zturn-item").each(function (index, element) {
+        //index是第几个元素 X是选取的中间数 num_li是总数
+        var rt = 1;//1:右侧：-1：左侧
+        if ((index - X) > num_li / 2 || (index - X) < 0 && (index - X) > (-num_li / 2)) { rt = -1 };//判断元素左侧还是右侧
+        var i = Math.abs(index - X);//取绝对值
+        if (i > num_li / 2) { i = X + num_li - index; }//i:是左或者右的第几个
+        if ((index - X) < (-num_li / 2)) { i = num_li + index - X; }
+
+        $(this).css({
+          'position': 'absolute',
+          'left': '50%',
+          'margin-left': -turn.width / 2 + zturnPy * rt * i + "px",
+          'z-index': num_li - i,
+          'opacity': Math.pow(turn.opacity, i),
+          'transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-webkit-transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-webkit-transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-moz-transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-ms-transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-o-transform': 'scale(' + Math.pow(turn.scale, i) + ')'
+        })
+        $(this).attr("data_n", index)
+      })
     }
 
-    /*
-     * Returns a constructor for the ViewModel so that the ViewModel is constructed
-     * each time the view is displayed.  Return an instance of the ViewModel if
-     * only one instance of the ViewModel is needed.
-     */
+    this.z_sort = function (turn, X) {
+      //console.log(turn, X)
+      var self = this;
+      var zturn = $("#" + turn.id);
+      var zturnitem = zturn.children(".zturn-item");
+      var num_li = zturnitem.length;//轮播元素个数 zturnPy为每个的偏移量
+      var zturnPy = turn.Awidth / (num_li - 1);
+
+
+      zturn.children(".zturn-item").each(function (index, element) {
+
+        var rt = 1;//1:右侧：-1：左侧
+        if ((index - X) > num_li / 2 || (index - X) < 0 && (index - X) > (-num_li / 2)) { rt = -1 };//判断元素左侧还是右侧
+        var i = Math.abs(index - X);//取绝对值
+        if (i > num_li / 2) { i = parseInt(X) + num_li - index; }//i:是左或者右的第几个
+        if ((index - X) < (-num_li / 2)) { i = num_li + index - X; }
+
+        $(this).css({
+          'position': 'absolute',
+          'left': '50%',
+          'margin-left': -turn.width / 2 + zturnPy * rt * i + "px",
+          'z-index': num_li - i,
+          'opacity': Math.pow(turn.opacity, i),
+          'transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-webkit-transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-webkit-transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-moz-transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-ms-transform': 'scale(' + Math.pow(turn.scale, i) + ')',
+          '-o-transform': 'scale(' + Math.pow(turn.scale, i) + ')'
+        })
+      })
+
+    }
+
+    function DashboardViewModel() {
+      var self = this;
+      self.fullName = ko.pureComputed(function () {
+        new zturn({
+            id: "zturn",
+            opacity: 0.9,
+            width: 382,
+            Awidth: 400,
+            scale: 0.9
+          });
+        return 0;
+    }, this);
+    }
+
     return new DashboardViewModel();
   }
 );
