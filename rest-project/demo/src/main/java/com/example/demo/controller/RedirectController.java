@@ -31,6 +31,7 @@ public class RedirectController {
 
     private static final String WX_APPID = "wxe634435c58769578";
     private static final String WX_APPSECRET = "9cbe7b9611a722b87980ca9d8022627f";
+    private static ArrayList<String> list = new ArrayList<>();
     private String frontUrl;
 
     @Autowired
@@ -150,10 +151,7 @@ public class RedirectController {
                             //7city
                             city = userMessageJsonObject.getString("city");
 
-                            if (null != weChatUserService.findWeChatUserId(openid)) {
-                                logger.info("微信用户信息已存在");
 
-                            } else {
                                 WeChatUser weChatUser = new WeChatUser();
                                 weChatUser.setOpenId(openid);
                                 weChatUser.setNickname(nickName);
@@ -162,7 +160,7 @@ public class RedirectController {
                                 weChatUser.setCountry(country);
                                 weChatUser.setProvince(province);
                                 weChatUser.setCity(city);
-                                ArrayList<String> list = new ArrayList<>();
+
                                 if (!list.contains(openid)) {
                                     list.add(openid);
                                     weChatUserService.insertWeChatUser(weChatUser);
@@ -172,10 +170,9 @@ public class RedirectController {
                                     logger.info("用户昵称:{}", nickName);
                                     logger.info("用户性别:{}", sex);
                                     logger.info("OpenId:{}", openid);
+                                }else{
+                                    logger.info("微信用户信息已存在");
                                 }
-
-                            }
-
                         } catch (JSONException e) {
                             logger.error("获取用户信息失败");
                         }
@@ -189,6 +186,7 @@ public class RedirectController {
         logger.info("访问聊天界面");
         logger.info("跳转的前端地址:{}", frontUrl);
         resp.sendRedirect(frontUrl);
+
 
     }
 }
