@@ -7,7 +7,7 @@
     "oraclejet"
   ],
   "dependencies": {
-    "@oracle/oraclejet": "http://artifactory-slc.oraclecorp.com/artifactory/ojet-release-local/com/oracle/oraclejet/oracle-oraclejet/4.2.0-41239/oracle-oraclejet-4.2.0-41239.tgz",
+    "@oracle/oraclejet": "^4.2.0",
     "socket.io": "^2.0.3",
     "express": "^4.15.2"
   },
