@@ -27,7 +27,8 @@ io.on('connection', function (socket) {
 	/*是否是新用户标识*/
 	var isNewPerson = true; 
 	/*当前登录用户*/
-    var username = null;
+	var username = null;
+	var userimg = null ;
 	/*监听登录*/
 	socket.on('login',function(data){
 		for(var i=0;i<users.length;i++){

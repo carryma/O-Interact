@@ -3,11 +3,11 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<div class="oj-hybrid-padding">
+<div class="oj-hybrid-padding" style="padding: 0;height: 90%">
 	<div class="login-wrap">
 		<div class="login-con">
 			<oj-label for="text-input">欢迎用户登陆</oj-label>
-			<img width="150px" height="150px" data-bind="attr:{src:headimage}"></img>
+			<img id="loginImg" width="150px" height="150px" data-bind="attr:{src:headimage}"></img>
 			<br>
 			<!-- <div id="loginName" data-bind="value : nickname"></div> -->
 			<input id="loginName" data-bind="value:nickname">
@@ -20,7 +20,7 @@ and open the template in the editor.
 	</div>
 
 	<div class="chat-wrap" style=" display:none">
-		<h1>多人聊天室</h1>
+		<div class="room-info">Chat Room</div>
 		<div class="chat-con clearfix"></div>
 		<div class="bottom">
 			<input type="text" id="sendtxt">

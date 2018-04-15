@@ -1,40 +1,203 @@
 /*公共样式*/
-*{padding:0; margin:0;}
- html,body{width:100%;height: 100%;}
-.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
-.clearfix{*zoom:1}
-.cred{color:#f03e3e;}
-.cgreen{color:#459d36;}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.clearfix {
+    *zoom: 1
+}
+
+.cred {
+    color: #f03e3e;
+}
+
+.cgreen {
+    color: #459d36;
+}
+
 /*.hide{display:none;}*/
-.fr{float:right;}
-.fl{float: left;}
-.rela{position: relative;}
-.abs{position:absolute;}
-.h2{position: fixed; z-index:20; width: 100%; height:50px; line-height:50px; font-size:20px; left: 0; top: 0; background: #000; color: #fff;}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.rela {
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+}
+
+.h2 {
+    position: fixed;
+    z-index: 20;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    left: 0;
+    top: 0;
+    background: #000;
+    color: #fff;
+}
 
 /*登录界面*/
-.login-wrap{background:#e7e7e7;width:100%;height:100%; text-align:center;}
-.login-con{padding-top: 100px;}
-.login-con h3{margin-bottom: 20px;}
-.login-con input{padding:15px 0;width:30%;text-align: center; color:rgb(140, 0, 255);border: none;
-                 display:block; margin:20px auto; height: 40px; line-height: 40px; margin-bottom: 20px;
-                 background-color: antiquewhite;font-size:20px;font-family:serif;font-weight:900}
-.login-con button{width:30%;display:block; margin:0 auto; height: 40px; line-height:40px; border:none; background:#9d3658; color:#fff; border-radius:5px;}
+
+.login-wrap {
+    background: #e7e7e7;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.login-con {
+    padding-top: 100px;
+}
+
+.login-con input {
+    padding: 15px 0;
+    width: 30%;
+    text-align: center;
+    color: rgb(140, 0, 255);
+    border: none;
+    display: block;
+    margin: 20px auto;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 20px;
+    background-color: antiquewhite;
+    font-size: 20px;
+    font-family: serif;
+    font-weight: 900
+}
+
+.login-con button {
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    background: #9d3658;
+    color: #fff;
+    border-radius: 5px;
+}
 
 /*聊天界面*/
-.chat-wrap{width: 100%; height: 100%;overflow-y:scroll; background:#e7e7e7; text-align:center;}
-.chat-con{padding: 50px 0; background:#e7e7e7;}
-.chat-con p{display:inline-block; padding:5px 10px; background:#999;border-radius:5px; color:#fff; margin:5px 0;}
-.bottom{position:fixed;bottom:0; left: 0; width:100%; height: 50px; background: #fff;}
-.bottom input{width: 78%; height: 50px; line-height: 50px; float:left;border:none;}
-.bottom button{width: 20%;height: 50px; float: right; border:none; background:#459d36;color: #fff;}
-.chat-item{width:100%; margin-bottom:20px;}
-.item-right .message{background: #62b900;}
-.item-left .message{background: #fff; margin-top:20px;}
-.item-left .img{margin-right:10px;}
-.item-left .uname{font-size:12px; left:50px; top:0;}
-.chat-item .message{width:60%;display:block; padding:10px;border-radius:5px; margin-right:10px;}
-/*.chat-item .img{display:inline-block; width:40px; height:40px; 
-    background:url(http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132) 
-    no-repeat; background-size:100% 100%;}*/
-.chat-item .img{ display:inline-block;width:40px; height:40px; background-size:100% 100%;}
+
+.chat-wrap {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    background: url(../images/chat_bg.jpg);
+    text-align: center;
+}
+
+.room-info {
+    padding-top: 1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3em;
+    color: lightcoral;
+}
+
+.chat-con {
+    overflow: auto;
+    z-index: 4;
+    padding: 20px 10;
+}
+
+.chat-con p {
+    margin-top: 1px;
+    z-index: 4;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: indianred;
+    margin: 5px 0;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+}
+
+.bottom input {
+    width: 78%;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    border: none;
+}
+
+.bottom button {
+    width: 20%;
+    height: 50px;
+    float: right;
+    border: none;
+    background: #9d3650;
+    color: #fff;
+}
+
+.chat-item {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.item-right .message {
+    background-color: #7f91e2;
+}
+
+.item-left .message {
+    background: #db9494;
+    margin-top: 15px;
+}
+
+.item-left .img {
+    margin-right: 10px;
+}
+
+.item-left .uname {
+    font-size: 12px;
+    left: 50px;
+    top: 0;
+}
+
+.chat-item .message {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.imgstyle {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-size: 100% 100%;
+}
