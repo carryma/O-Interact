@@ -1,67 +1,45 @@
-<div class="text-center">
-    <h1>Oracle Interact Management System</h1>	
-</div>
-<div class="oj-flex">
-	<div class="signin">
-		<div class="signin-head"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132" alt="" class="img-circle"></div>
-		<form class="form-signin" role="form">
-			<input type="text" id="username" class="form-control" placeholder="UserName" required autofocus />
-			<input type="password" id="password" class="form-control" placeholder="Password" required />
-			<button class="btn btn-lg btn-warning btn-block"  type="button" on-click='[[submitInput]]'>Login</button> 
+<div class="oj-hybrid-padding">
+	<div class="text-center">
+		<h1>Oracle Interact Management System</h1>
+	</div>
+	<div class="oj-flex">
+		<div class="signin">
+			<div class="signin-head">
+				<img src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132"
+				 alt="" class="img-circle">
+			</div>
+			<form class="form-signin" role="form">
+				<input type="text" id="username" class="form-control" placeholder="UserName" required autofocus />
+				<input type="password" id="password" class="form-control" placeholder="Password" required />
+				<button class="btn btn-lg btn-warning btn-block" type="button" on-click='[[submitInput]]'>Login</button>
 
-			<div class="modal fade" id="mymodal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">
-								<span aria-hidden="true">×</span><span class="sr-only">Close</span>
-							</button>
-							<h4 class="modal-title">Tips</h4>
+				<div class="modal fade" id="mymodal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									<span aria-hidden="true">×</span>
+									<span class="sr-only">Close</span>
+								</button>
+								<h4 class="modal-title">Tips</h4>
+							</div>
+							<div class="modal-body">
+								<p class="text-center">The UserName Is Null Or Wrong </p>
+								<P class="text-center">Please Try Again !!!</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
 						</div>
-						<div class="modal-body">
-							<p class="text-center">The UserName Is Null Or Wrong </p>
-							<P class="text-center">Please Try Again !!!</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						</div>
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
-			<label class="checkbox">
-				<input type="checkbox" value="remember-me"> Remember Me
-			</label>
-		</form>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+				<label class="checkbox">
+					<input type="checkbox" value="remember-me"> Remember Me
+				</label>
+			</form>
+		</div>
 	</div>
 </div>
-
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-
-<div id="sampleDemo" style="" class="demo-padding demo-container">
-    <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
-        <h1>Login Oracle Interact</h1>
-        <div class="oj-form-layout">
-            <div class="oj-flex">  
-                <div class="oj-flex-item">
-
-                    <div class="oj-flex-item">
-                        <oj-label for="text-input">Username</oj-label></div>
-                    <div class="oj-flex-item"> 
-                        <oj-input-text id="text-input" value="{{value}}"></oj-input-text></div>
-                    <div class="oj-flex-item">
-                        <oj-label for="password">Password</oj-label></div>
-                    <div class="oj-flex-item">
-                        <oj-input-password id="password" value="{{value}}">
-                        </oj-input-password></div>  
-                    <div id="button-container oj-flex-item">
-                        <oj-button id='buttonId1' on-click='[[submitInput]]'>Submit</oj-button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
