@@ -2,6 +2,8 @@ package com.example.demo.dao;
 
 import com.example.demo.entity.WeChatUser;
 
+import java.util.List;
+
 
 /**
  * WeChat User Dao
@@ -13,4 +15,5 @@ public interface WeChatUserDao {
     int insertWeChatUser(WeChatUser weChatUser);
     String findWeChatUserId (String weChatOpenId);
     WeChatUser findWechatUserByOpenId(String weChatOpenId);
+     List<WeChatUser> findAllInfo();
 }

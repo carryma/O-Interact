@@ -5,8 +5,11 @@ import com.example.demo.entity.WeChatUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -51,6 +54,14 @@ public class WeChatUserDaoImpl implements WeChatUserDao {
         } else {
             return null;
         }
+    }
+    @Override
+    public List<WeChatUser> findAllInfo(){
+        String sql ="select * from wechat_user";
+        List<WeChatUser> users = jdbcTemplate.query(sql,new Object[]{},
+                new BeanPropertyRowMapper(WeChatUser.class));
+
+        return (users !=null && users.size()>0)?  users : null;
     }
 
 /*    @Override

@@ -28,8 +28,10 @@ public class RedirectController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private static final String WX_APPID = "wxe634435c58769578";
-    private static final String WX_APPSECRET = "9cbe7b9611a722b87980ca9d8022627f";
+    private static final String WX_APPID = "wxabe14a0c6c57dec9";
+            //"wxe634435c58769578";
+    private static final String WX_APPSECRET = "0bc68bafddf7ce66f6fd7b68a6718db2";
+                    //"9cbe7b9611a722b87980ca9d8022627f";
     private static ArrayList<String> list = new ArrayList<>();
     private String frontUrl;
 
@@ -160,7 +162,8 @@ public class RedirectController {
                                 weChatUser.setCountry(country);
                                 weChatUser.setProvince(province);
                                 weChatUser.setCity(city);
-
+                            logger.error("获取用户信息失败-------------");
+                            logger.info("list",list);
                                 if (!list.contains(openid)) {
                                     weChatUserService.insertWeChatUser(weChatUser);
                                     list.add(openid);
