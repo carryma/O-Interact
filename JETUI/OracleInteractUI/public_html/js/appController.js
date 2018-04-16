@@ -21,6 +21,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                     'chat': {label: 'Chat'},
                     'customers': {label: 'Customers'},
                     'about': {label: 'About'},
+                    'vote': {label: 'Vote'},
                     'login': {label: 'Login', isDefault: true}
                 });
                 oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();

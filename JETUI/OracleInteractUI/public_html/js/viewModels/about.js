@@ -5,84 +5,49 @@
 /*
  * Your about ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery'],
+define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputnumber'],
         function (oj, ko, $) {
-
-            function AboutViewModel() {
-                var self = this;
-                var xinm = new Array();
-                xinm[0] = "css/images/lottery/1.jpg"
-                xinm[1] = "css/images/lottery/2.jpg"
-                xinm[2] = "css/images/lottery/3.jpg"
-                xinm[3] = "css/images/lottery/4.jpg"
-                xinm[4] = "css/images/lottery/5.jpg"
-                xinm[5] = "css/images/lottery/6.jpg"
-                xinm[6] = "css/images/lottery/1.jpg"
-                xinm[7] = "css/images/lottery/2.jpg"
-                xinm[8] = "css/images/lottery/3.jpg"
-                xinm[9] = "css/images/lottery/4.jpg"
-                xinm[10] = "css/images/lottery/5.jpg"
-                xinm[11] = "css/images/lottery/6.jpg"
-
-                var phone = new Array();
-                phone[0] = "王尼玛"
-                phone[1] = "张全蛋"
-                phone[2] = "纸巾老撕"
-                phone[3] = "王铁柱"
-                phone[4] = "田二妞"
-                phone[5] = "唐马儒"
-                phone[6] = "张三"
-                phone[7] = "李四"
-                phone[8] = "王二麻子"
-                phone[9] = "咯咯咯"
-                phone[10] = "一二三"
-                phone[11] = "四五六"
+            this.lottery_show = function (xinm, phone) {
                 var nametxt = $('.slot');
                 console.log(nametxt);
-                alert(nametxt);
                 var phonetxt = $('.name');
-                console.log(phonetxt);
-                var pcount = xinm.length - 1;//参加人数
-                console.log(pcount);
-                var runing = true;
-                var trigger = true;
-                var inUser = (Math.floor(Math.random() * 10000)) % 5 + 1;
-                console.log(inUser);
-                var num = 0;
-                var Lotterynumber = 5; //设置单次抽奖人数
 
                 $(function () {
                     nametxt.css('background-image', 'url(' + xinm[0] + ')');
                     phonetxt.html(phone[0]);
                 });
+            }
 
-// 开始停止
-                self.start = function(){
 
-                    if (runing) {
-
-                        if (pcount <= Lotterynumber) {
-                            alert("抽奖人数不足5人");
-                        } else {
-                            runing = false;
-                            $('#start').text('停止');
-                            startNum()
-                        }
-
+            this.lottery_down = function (xinm, phone, number) {
+                var nametxt = $('.slot');
+                console.log(nametxt);
+                var phonetxt = $('.name');
+                var pcount = xinm.length - 1;//参加人数
+                console.log(pcount);
+                var runing = $('#start').text() == "Start" ? true : false;
+                var trigger = true;
+                var num = 0;
+                var Lotterynumber = number; //设置单次抽奖人数
+                var count = Lotterynumber;
+                if (runing) {
+                    console.log(runing);
+                    if (pcount <= Lotterynumber) {
+                        alert("There are only " + pcount + " person. Please set lottery number smaller!");
                     } else {
-                        $('#start').text('自动抽取中(' + Lotterynumber + ')');
-                        zd();
+                        runing = false;
+                        $('#start').text('Stop');
+                        startNum()
                     }
 
+                } else {
+                    $('#start').text('Extracting(' + Lotterynumber + ')');
+                    zd();
                 }
 
-// 开始抽奖
 
-                function startLuck() {
-                    runing = false;
-                    $('#btntxt').removeClass('start').addClass('stop');
-                    startNum()
-                }
+
+
 
 // 循环参加名单
                 function startNum() {
@@ -121,39 +86,78 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                                     i++;
                                     Lotterynumber--;
 
-                                    $('#start').text('自动抽取中(' + Lotterynumber + ')');
+                                    console.log($('.slot'));
+                                    console.log($('.slot').text());
+                                    console.log($('.slot').css('background-image'));
+                                    var tempName = $('.slot').text();
+                                    var imageUrl = $('.slot').css('background-image');
+                                    var tempImage = imageUrl.substring(4, imageUrl.length-1);
+                                    $('#start').text('Extracting(' + Lotterynumber + ')');
 
-                                    if (i == 5) {
+                                    if (i == count) {
                                         console.log("抽奖结束");
                                         window.clearInterval(stopTime);
-                                        $('#start').text("开始");
-                                        Lotterynumber = 5;
+                                        $('#start').text("Start");
+                                        Lotterynumber = count;
                                         trigger = true;
                                     }
-                                    ;
 
-                                    if (Lotterynumber == inUser) {
-                                        // 指定中奖人
-                                        nametxt.css('background-image', 'url(css/images/lottery/7.jpg)');
-                                        phonetxt.html('指定中奖人');
-                                        $('.luck-user-list').prepend("<li><div class='portrait' style='background-image:url(css/images/lottery/7.jpg)'></div><div class='luckuserName'>指定中奖人</div></li>");
-                                        $('.modality-list ul').append("<li><div class='luck-img' style='background-image:url(css/images/lottery/7.jpg)'></div><p>指定中奖人</p></li>");
-                                        inUser = 9999;
-                                    } else {
-                                        //打印中奖者名单
-                                        $('.luck-user-list').prepend("<li><div class='portrait' style='background-image:url(" + xinm[num] + ")'></div><div class='luckuserName'>" + phone[num] + "</div></li>");
-                                        $('.modality-list ul').append("<li><div class='luck-img' style='background-image:url(" + xinm[num] + ")'></div><p>" + phone[num] + "</p></li>");
-                                        //将已中奖者从数组中"删除",防止二次中奖
-                                        xinm.splice($.inArray(xinm[num], xinm), 1);
-                                        phone.splice($.inArray(phone[num], phone), 1);
-                                    }
-                                    ;
+                                    //打印中奖者名单
+                                    $('.luck-user-list').prepend("<li><div class='portrait' style='background-image:" + imageUrl + "'></div><div class='luckuserName'>" + tempName + "</div></li>");
+                                    $('.modality-list ul').append("<li><div class='luck-img' style='background-image:url(" + xinm[num] + ")'></div><p>" + phone[num] + "</p></li>");
+                                    //将已中奖者从数组中"删除",防止二次中奖
+                                    xinm.splice($.inArray(tempImage, xinm), 1);
+                                    phone.splice($.inArray(tempName, phone), 1);
+
+
                                 }
                             }, 1000);
                         }
                         ;
                     }
                 }
+            }
+
+            function AboutViewModel() {
+                var self = this;
+                self.currentNumber = ko.observable(1);
+                self.min = ko.observable(1);
+                self.step = ko.observable(1);
+                var xinm = new Array();
+                xinm[0] = "css/images/lottery/1.jpg"
+                xinm[1] = "css/images/lottery/2.jpg"
+                xinm[2] = "css/images/lottery/3.jpg"
+                xinm[3] = "css/images/lottery/4.jpg"
+                xinm[4] = "css/images/lottery/5.jpg"
+                xinm[5] = "css/images/lottery/6.jpg"
+
+
+                var phone = new Array();
+                phone[0] = "王尼玛"
+                phone[1] = "张全蛋"
+                phone[2] = "纸巾老撕"
+                phone[3] = "王铁柱"
+                phone[4] = "田二妞"
+                phone[5] = "唐马儒"
+
+                var test;
+                self.fullName = ko.pureComputed(function () {
+                    test = new lottery_show(xinm, phone);
+                    console.log(test);
+                    return 0;
+                }, this);
+                console.log(test);
+
+// 开始停止
+                self.start = function () {
+                    test1 = new lottery_down(xinm, phone, self.currentNumber());
+                }
+
+
+
+
+
+
                 // Below are a subset of the ViewModel methods invoked by the ojModule binding
                 // Please reference the ojModule jsDoc for additional available methods.
 

@@ -40,7 +40,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 		/*电脑用户获取"Administrator",微信用户自动使用昵称和头像登陆*/
 		if (getParameterByName("id") === undefined) {
 			self.nickname("Administrator");
-			self.headimage("http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132");
+			//self.headimage("http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132");
+			self.headimage("../../images/default_head_image.jpg");
 		} else {
 			$.ajaxSetup({ async: false });
 			//var url = "http://localhost:8081/userinfo/" + getParameterByName("id");		
@@ -63,13 +64,16 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			var socket = io();
 			/*定义用户名*/
 			var uname = null;
+			var loginimg = null;
 
 			/*登录*/
 			$('.login-btn').click(function () {
 				uname = $.trim($('#loginName').val());
+				//loginimg = $.trim($('#loginImg')[0].src);
+				//alert(loginimg);
 				if (uname) {
 					/*向服务端发送登录事件*/
-					socket.emit('login', { username: uname });
+					socket.emit('login', { username: uname});
 				} else {
 					alert('请输入昵称');
 				}
@@ -87,6 +91,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 
 			/*登录成功*/
 			socket.on('loginSuccess', function (data) {
+				//alert(data.loginimg);
 				if (data.username === uname) {
 					checkin(data);
 				} else {
@@ -107,6 +112,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 
 			/*接收消息*/
 			socket.on('receiveMessage', function (data) {
+				//$("#msgImg").attr('src', data.loginimg);
 				showMessage(data);
 			});
 
@@ -137,13 +143,15 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			function showMessage(data) {
 				var html;
 				if (data.username === uname) {
-					html = '<div class="chat-item item-right clearfix"><img id="msgImg" class="img fr" src="http://thirdwx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLBoptzE8yfj7tpL76MiaM89BFMO817SVX7B7Kr77764E9DCY0wsfl0YDibhMgH5icACOTdaGEuPIHjvg/132"}"></img><span class="message fr">' + data.message + '</span></div>';
+					html = '<div class="chat-item item-right clearfix"><img id="msgImg" class="imgstyle fr" src="../../images/default_head_image.jpg" alt=""></img><span class="message fr">' + data.message + '</span></div>';
+					//alert(self.headimage());
 				} else {
-					html = '<div class="chat-item item-left clearfix rela"><span class="abs uname">' + data.username + '</span><span class="img fl"></span><span class="fl message">' + data.message + '</span></div>';
+					html = '<div class="chat-item item-left clearfix rela"><img id="msgImg" class="imgstyle fl" src="../../images/default_head_image.jpg" alt=""></img><span class="abs uname">' + data.username + '</span><span class="img fl"></span><span class="fl message">' + data.message + '</span></div>';
 				}
 				$('.chat-con').append(html);
+				$('.chat-wrap').scrollTop($('.chat-wrap')[0].scrollHeight);
 				//alert($("#msgImg")[0].src);
-				alert($("#msgImg").attr('src',this.headimage()));;  
+				//alert($("#msgImg").attr('src', this.headimage()));;
 			}
 
 		});

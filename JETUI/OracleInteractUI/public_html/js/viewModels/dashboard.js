@@ -110,6 +110,10 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
     self.createLottery = function(){
         window.location.href = "http://localhost:8081/index.html?root=about";
     };
+    
+    self.createVote = function(){
+        window.location.href = "http://localhost:8081/index.html?root=incidents";
+    };
     }
 
     return new DashboardViewModel();

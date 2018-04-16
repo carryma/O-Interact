@@ -15,7 +15,7 @@
             <p class="xxgy">Chat</p>
             <div class="for_btn">
                 <img src="../../images/Livechat.jpg" width="100%">
-              <a class="in_page"  data-bind="click: createChat">
+              <a class="in_page"  data-bind="click: createChat"  title="Click">
                   <img src="../../images/iconin.png"/>
               </a>
                
@@ -24,7 +24,7 @@
               <div class="zwjs">
                 Are you want to create an chat room to interact with others on site?
                 <br>
-                <span class="focus_darks">Click <span style="font-size: 18px">Live Chat</span> and interactive now!</span>
+                <span class="focus_darks">Click <span style="font-size: 18px" data-bind="click: createChat" title="Click">Live Chat</span> and interactive now!</span>
               </div>
             </div>
           </li>
@@ -38,21 +38,8 @@
               </a>
             </div>
             <div class="students_star">
-              <p class="cell_list">
-                <span class="lf">姓名：
-                  <span class="darks">小明</span>
-                </span>
-                <span class="rt">薪资 ：
-                  <span class="darks">15k</span>
-                </span>
-              </p>
-              <p class="cell_list">
-                <span>入职：
-                  <span class="darks">把酒问青天</span>
-                </span>
-              </p>
               <div class="zwjs">
-                自我介绍是向别人展示你自我介绍好不好,甚至直接关系到你给别人的第一印象的好坏及以后自我介绍是向别人展示你自我介绍好不好
+                Something we can do with that platform -- Activity 2
               </div>
             </div>
           </li>
@@ -61,26 +48,28 @@
             <p class="xxgy">Activity 3</p>
             <div class="for_btn">
               <img src="../../images/a3.png" width="100%">
+              <a href="#" class="in_page" data-bind="click: createVote">
+                <img src="../../images/iconin.png" />
+              </a>
+            </div>
+            <div class="students_star">
+              <div class="zwjs">
+                Something we can do with that platform -- Activity 3
+              </div>
+            </div>
+          </li>
+          
+          <li class="poster-item zturn-item">
+            <p class="xxgy">Activity 4</p>
+            <div class="for_btn">
+              <img src="../../images/a4.png" width="100%">
               <a href="#" class="in_page">
                 <img src="../../images/iconin.png" />
               </a>
             </div>
             <div class="students_star">
-              <p class="cell_list">
-                <span class="lf">姓名：
-                  <span class="darks">小明</span>
-                </span>
-                <span class="rt">薪资 ：
-                  <span class="darks">15k</span>
-                </span>
-              </p>
-              <p class="cell_list">
-                <span>入职：
-                  <span class="darks">把酒问青天</span>
-                </span>
-              </p>
               <div class="zwjs">
-                自我介绍是向别人展示你自我介绍好不好,甚至直接关系到你给别人的第一印象的好坏及以后自我介绍是向别人展示你自我介绍好不好
+                Something we can do with that platform -- Activity 4
               </div>
             </div>
           </li>
@@ -91,7 +80,7 @@
     </div>
 
   </div>
-  <span data-bind="text: fullName" style="visibility: hidden"> </span>
+  <span data-bind="text: fullName" style="visibility: hidden"></span>
 
 <!-- <script type="text/javascript">
   var aa = new zturn({

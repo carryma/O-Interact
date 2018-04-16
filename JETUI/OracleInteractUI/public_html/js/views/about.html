@@ -3,18 +3,28 @@
  The Universal Permissive License (UPL), Version 1.0
 -->
 <div class='luck-back'>
+    <h1 class="turn_3d">Who is the lucky star?</h1>
     <div class="luck-content ce-pack-end">
         <div id="luckuser" class="slotMachine">
-            <div class="slot">
-                <span class="name">姓名</span>
+            <div id="slot" class="slot">
+                <span id="name" class="name">姓名</span>
             </div>
         </div>
+        <div class="luck-setting">
+        <div class="luck-input-number">
+            <oj-input-number id="inputnumber-id"
+                             min= "[[min]]"
+                             step= "[[step]]" 
+                             value="{{currentNumber}}">
+            </oj-input-number>
+        </div>
         <div class="luck-content-btn">
-            <a id="start" class="start" data-bind="click: start">开始</a>
+            <a id="start" class="start" data-bind="click: start">Start</a>
+        </div>
         </div>
         <div class="luck-user">
             <div class="luck-user-title">
-                <span>中奖名单</span>
+                <span>List of Lucky One</span>
             </div>
             <ul class="luck-user-list"></ul>
             <div class="luck-user-btn">
@@ -23,3 +33,4 @@
         </div>
     </div>
 </div>
+<span data-bind="text: fullName" style="visibility: hidden"></span>

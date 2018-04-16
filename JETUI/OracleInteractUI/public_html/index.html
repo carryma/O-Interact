@@ -1,18 +1,13 @@
 <html>
-
 <head>
     <title>Oracle Interact</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
     <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/chat.css" type="text/css" />
     <link href="css/signin.css" rel="stylesheet">
-    <!-- This is the main css file for the default Alta theme -->
-    <!-- injector:theme -->
     <link rel="stylesheet" href="https://static.oracle.com/cdn/jet/v4.1.0/default/css/alta/oj-alta-min.css" type="text/css" />
-    <!-- This contains icon fonts used by the starter template -->
     <link rel="stylesheet" href="css/demo-alta-site-min.css" type="text/css" />
     <link rel="stylesheet" href="css/public.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -30,7 +25,7 @@
 
     <div id="globalBody" class="oj-web-applayout-page">
 
-        <header role="banner" class="oj-web-applayout-header">
+        <header role="banner" class="oj-web-applayout-header" style="background-color:#f7f5f6db">
             <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
                 <!-- Oracle 图标，应用名称：O-Interact -->
                 <div class="oj-flex-bar-middle oj-sm-align-items-baseline">
@@ -55,25 +50,13 @@
                     </oj-toolbar>
                 </div>
             </div>
-
-            <!-- 导航栏：'dashboard'， 'incidents', 'customers','about', 'login'
-            <div role="navigation" class="oj-web-applayout-max-width oj-web-applayout-navbar">
-                <oj-navigation-list data="[[navDataSource]]"
-                                    data-bind="css: smScreen() ? '' : 'oj-md-condense oj-md-justify-content-flex-end'"
-                                    display="[[smScreen() ? 'icons' : 'all']]"
-                                    edge="top"
-                                    item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('navTemplate', true)]]"
-                                    selection="{{router.stateId}}">
-                </oj-navigation-list>
-            </div>
-            -->
         </header>
 
         <!-- 绑定模块Module -->
-        <div role="main" class="oj-web-applayout-max-width oj-web-applayout-content" data-bind="ojModule: router.moduleConfig">
+        <div role="main" class="oj-web-applayout-content" style="padding: 0" data-bind="ojModule: router.moduleConfig">
         </div>
 
-        <footer class="oj-web-applayout-footer" role="contentinfo">
+        <footer class="oj-web-applayout-footer" role="contentinfo" style="background-color:#f7f5f6db ">
             <div class="oj-web-applayout-footer-item oj-web-applayout-max-width">
                 <ul>
                     <!-- ko foreach: footerLinks -->
