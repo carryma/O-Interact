@@ -17,11 +17,13 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                 // Router setup
                 self.router = oj.Router.rootInstance;
                 self.router.configure({
-                    'dashboard': {label: 'Dashboard'},
+                    'navigation': {label: 'Navigation'},
                     'chat': {label: 'Chat'},
                     'customers': {label: 'Customers'},
-                    'about': {label: 'About'},
-                    'login': {label: 'Login', isDefault: true}
+                    'lottery': {label: 'Lottery'},
+                    'vote': {label: 'Vote'},
+                    'login': {label: 'Login', isDefault: true},
+                    'largeScreen': {label: 'LargeScreen'}
                 });
                 oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
@@ -29,13 +31,15 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                 var navData = [
                     {name: 'Login', id: 'login',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'},
-                    {name: 'Dashboard', id: 'dashboard',
+                    {name: 'Navigation', id: 'navigation',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-chart-icon-24'},
                     {name: 'Incidents', id: 'incidents',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-fire-icon-24'},
                     {name: 'Customers', id: 'customers',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'},
-                    {name: 'About', id: 'about',
+                    {name: 'Lottery', id: 'lottery',
+                        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'},
+                    {name: 'LargeScreen', id: 'largeScreen',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'}
                 ];
                 self.navDataSource = new oj.ArrayTableDataSource(navData, {idAttribute: 'id'});

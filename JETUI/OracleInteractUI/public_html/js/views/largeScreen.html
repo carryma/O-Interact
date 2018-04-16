@@ -1,0 +1,63 @@
+<!--
+ Copyright (c) 2014, 2018, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+
+ <style>  
+    *{margin:0;padding:0;}  
+  
+    @keyframes mymove {
+        from { 
+            left: 800px; 
+        }
+        to { 
+            left: -800px;
+        }
+    }
+    
+    .move {
+        animation: mymove 10s linear 1;
+    }
+    
+    #barrage{  
+        margin:auto;  
+        margin-top:50px;  
+        position:relative;  
+        width:800px;  
+        height:424px;  
+        background:#fff;  
+        border:2px solid #ffcc00;
+        overflow: hidden;
+    }  
+  
+    #barrage div{  
+        /*width:100%;*/  
+        height:20px;  
+        line-height:20px;  
+        position:absolute;  
+    }  
+  
+    #qr {
+        position: absolute;
+        left: 10px;
+        top: 200px;
+    }
+    #qr img {
+        width: 200px;
+    }
+  </style>  
+  <div style="background: url(images/bg_3d.png);background-size: 100% 100%;max-height:100% ;">
+    <div id="barrage"></div>  
+
+  
+  <div id="qr">
+      <img src="images/QR_code_mix.png"/>
+  </div>
+</div>
+
+
+ 
+ 
+ 
+ 
+ 

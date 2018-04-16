@@ -107,6 +107,13 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
         window.location.href = "http://localhost:8081/index.html?root=chat";
         
     };
+    self.createLottery = function(){
+        window.location.href = "http://localhost:8081/index.html?root=lottery";
+    };
+    
+    self.createVote = function(){
+        window.location.href = "http://localhost:8081/index.html?root=vote";
+    };
     }
 
     return new DashboardViewModel();
