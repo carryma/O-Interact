@@ -22,7 +22,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                     'customers': {label: 'Customers'},
                     'lottery': {label: 'Lottery'},
                     'vote': {label: 'Vote'},
-                    'login': {label: 'Login', isDefault: true}
+                    'login': {label: 'Login', isDefault: true},
+                    'largeScreen': {label: 'LargeScreen'}
                 });
                 oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
@@ -37,6 +38,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                     {name: 'Customers', id: 'customers',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'},
                     {name: 'Lottery', id: 'lottery',
+                        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'},
+                    {name: 'LargeScreen', id: 'largeScreen',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'}
                 ];
                 self.navDataSource = new oj.ArrayTableDataSource(navData, {idAttribute: 'id'});
