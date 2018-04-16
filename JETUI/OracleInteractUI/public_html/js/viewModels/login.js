@@ -4,7 +4,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
         self.submitInput = function () {
             var userName = $("#username").val();
             if (userName !== null && userName === "kanma") {
-              window.location.href = "http://localhost:8081/index.html?root=dashboard";
+              window.location.href = "http://localhost:8081/index.html?root=navigation";
 			  //window.location.href = "http://www.kanmaui.tunnel.echomod.cn/index.html?root=customers";
             } else {
                 $("#mymodal").modal("toggle");
