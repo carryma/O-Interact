@@ -104,7 +104,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
         return 0;
     }, this);
     self.createChat = function(){
-        window.open("http://localhost:8081/index.html?root=chat");
+        window.open("http://localhost:8081/index.html?root=qrcode");
         
     };
     self.createLottery = function(){

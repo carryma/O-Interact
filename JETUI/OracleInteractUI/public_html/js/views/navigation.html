@@ -5,8 +5,10 @@
 
   <!--轮播-->
   <div class="lb_gl">
+    <span data-bind="text: fullName" style="visibility: hidden"></span>
+    <h1 class="turn_3d">Activity</h1>
     <div class="container">
-      <h1 class="turn_3d">Activity</h1>
+      
       <div class="pictureSlider poster-main">
         <div class="poster-btn poster-prev-btn"></div>
         <ul id="zturn" class="poster-list">
@@ -25,7 +27,7 @@
                 Are you want to create an chat room to interact with others on site?
                 <br>
                 <span class="focus_darks">Click 
-                    <span style="font-size: 18px" data-bind="click: createChat" title="Click">Live Chat</span>
+                    <span style="font-size: 18px" data-bind="click: createChat" title="Click">Here</span>
                     and interactive now!</span>
               </div>
             </div>
@@ -34,14 +36,19 @@
           <li class="poster-item zturn-item">
             <p class="xxgy">Lottery</p>
             <div class="for_btn">
-              <img src="../../images/a2.png" width="100%">
+              <img src="css/images/lottery/lottery.png" width="100%">
+<!--              <img src="../../images/a2.png" width="100%">-->
               <a class="in_page" data-bind="click: createLottery">
                 <img src="../../images/iconin.png" />
               </a>
             </div>
             <div class="students_star">
               <div class="zwjs">
-                Something we can do with that platform -- Activity 2
+                Lottery for all the participant?
+                <br>
+                <span class="focus_darks">Click 
+                    <span style="font-size: 18px" data-bind="click: createLottery" title="Click">Here</span>
+                </span>
               </div>
             </div>
           </li>
@@ -75,6 +82,21 @@
               </div>
             </div>
           </li>
+          
+          <li class="poster-item zturn-item">
+            <p class="xxgy">Activity 5</p>
+            <div class="for_btn">
+              <img src="../../images/a5.png" width="100%">
+              <a href="#" class="in_page">
+                <img src="../../images/iconin.png" />
+              </a>
+            </div>
+            <div class="students_star">
+              <div class="zwjs">
+                Something we can do with that platform -- Activity 5
+              </div>
+            </div>
+          </li>
 
         </ul>
 
@@ -82,7 +104,7 @@
     </div>
 
   </div>
-  <span data-bind="text: fullName" style="visibility: hidden"></span>
+  
 
 <!-- <script type="text/javascript">
   var aa = new zturn({

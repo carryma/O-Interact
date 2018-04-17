@@ -38,7 +38,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputnumber'],
 
 // 循环参加名单
         function startNum() {
-            num = Math.floor(Math.random() * pcount);
+            num = (Math.random() * pcount).toFixed();
             nametxt.css('background-image', 'url(' + headImage[num] + ')');
             nickNametxt.html(nickName[num]);
             t = setTimeout(startNum, 50);
