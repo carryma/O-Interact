@@ -1,16 +1,4 @@
 /*公共样式*/
-
-* {
-    padding: 0;
-    margin: 0;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-}
-
 .clearfix:after {
     content: ".";
     display: block;
@@ -109,7 +97,7 @@ body {
 .chat-wrap {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 95%;
     overflow-y: scroll;
     background: url(../images/chat_bg.jpg);
     text-align: center;
@@ -139,17 +127,17 @@ body {
 
 .bottom {
     position: absolute;
-    bottom:1%;
+    bottom:0%;
     left: 0%;
     width: 100%;
-    height: 50px;
-    background: #fff;
+    height: 46px;
+    background:  #9d3650;
 }
 
 .bottom input {
     width: 80%;
-    height: 40px;
-    line-height: 50px;
+    height: 45px;
+    line-height: 45px;
     float: left;
     border:solid;
     border-color:gray;
@@ -158,7 +146,7 @@ body {
 
 .bottom button {
     width: 20%;
-    height: 40px;
+    height: 45px;
     float: right;
     border: none;
     background: #9d3650;

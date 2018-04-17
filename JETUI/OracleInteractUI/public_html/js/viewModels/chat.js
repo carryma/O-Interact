@@ -69,7 +69,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			/*登录*/
 			$('.login-btn').click(function () {
 				uname = $.trim($('#loginName').val());
-				//loginimg = $.trim($('#loginImg')[0].src);
+				loginimg = $.trim($('#loginImg')[0].src);
 				//alert(loginimg);
 				if (uname) {
 					/*向服务端发送登录事件*/
