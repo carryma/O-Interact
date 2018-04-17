@@ -1,0 +1,35 @@
+<!--
+ Copyright (c) 2014, 2018, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+-->
+<div class='luck-back'>
+    <h1 class="turn_3d">Who is the lucky star?</h1>
+    <div class="luck-content ce-pack-end">
+        <div id="luckuser" class="slotMachine">
+            <div id="slot" class="slot">
+                <span id="name" class="name">姓名</span>
+            </div>
+        </div>
+        <div class="luck-setting">
+        <div class="luck-input-number">
+            <oj-input-number id="inputnumber-id"
+                             min= "[[min]]"
+                             step= "[[step]]" 
+                             value="{{currentNumber}}">
+            </oj-input-number>
+        </div>
+        <div class="luck-content-btn">
+            <a id="start" class="start" data-bind="click: start">Start</a>
+        </div>
+        </div>
+        <div class="luck-user">
+            <div class="luck-user-title">
+                <span>List of Lucky One</span>
+            </div>
+            <ul class="luck-user-list"></ul>
+            <div class="luck-user-btn">
+                <a href="#">中奖人</a>
+            </div>
+        </div>
+    </div>
+</div>
