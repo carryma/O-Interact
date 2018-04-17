@@ -35,6 +35,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 		var self = this;
 		self.nickname = ko.observable();
 		self.headimage = ko.observable();
+		self.number =ko.observable(0);
 		//alert(getParameterByName("id"));
 
 		/*电脑用户获取"Administrator",微信用户自动使用昵称和头像登陆*/
@@ -66,7 +67,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			/*定义用户名*/
 			var uname = null;
 			var loginimg = null;
-
 			/*登录*/
 			$('.login-btn').click(function () {
 				uname = $.trim($('#loginName').val());
@@ -79,6 +79,20 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 					alert('请输入昵称');
 				}
 			});
+			$(document).keydown(function (event) {
+				if (event.keyCode === 13) {
+					uname = $.trim($('#loginName').val());
+					//loginimg = $.trim($('#loginImg')[0].src);
+					//alert(loginimg);
+					if (uname) {
+						/*向服务端发送登录事件*/
+						socket.emit('login', { username: uname});
+					} else {
+						alert('请输入昵称');
+					}	
+				}
+			});
+
 
 			/*发送消息*/
 			$('.sendBtn').click(function () {
@@ -105,11 +119,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 				alert('昵称重复');
 			});
 
-			/*新人加入提示*/
-			socket.on('add', function (data) {
-				var html = '<p>系统消息:' + data.username + '已加入群聊</p>' + '<br>';
-				$('.chat-con').append(html);
-			});
+			// /*新人加入提示*/
+			// socket.on('add', function (data) {
+			// 	var html = '<p>系统消息:' + data.username + '已加入群聊</p>' + '<br>';
+			// 	$('.chat-con').append(html);
+				
+			// });
 
 			/*接收消息*/
 			socket.on('receiveMessage', function (data) {
@@ -118,12 +133,41 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			});
 
 			/*退出群聊提示*/
+			// socket.on('leave', function (name) {
+			// 	if (name !== null) {
+			// 		var html = '<p>' + name + '已退出群聊</p>' + '<br>';
+			// 		$('.chat-con').append(html);
+			// 	}
+			// });
 			socket.on('leave', function (name) {
 				if (name !== null) {
 					var html = '<p>' + name + '已退出群聊</p>' + '<br>';
 					$('.chat-con').append(html);
+				//	document.getElementById('#status').innerHTML=number +'users online';
 				}
 			});
+			// socket.on('system', function (name,count) {
+			// 	if (name !== null) {
+			// 		var html = '<p>' + name + '已退出群聊</p>' + '<br>';
+			// 		$('.chat-con').append(html);
+			// 		document.getElementById('#status').innerHTML=count +'users online';
+			// 	}
+			// });
+
+			// /*在线人数统计*/	
+			// socket.on('onlinenum',function(count){
+			// 	var test ='<p>'+count +'users online</p>';
+			// 		$('#status').append(test);
+			// });
+
+			socket.on('system',function(date){
+				var msg= '<p>'+'System: '+ date.user + (date.type=='login'? ' joined':' left')+'</p>'+'<br>';
+				var test ='<p>'+date.num +'users online</p>';
+				self.number(date.num);
+				$('.chat-con').append(msg);
+				//document.getElementById('#status').innerHTML=date.num;
+			});
+
 
 			/*隐藏登录界面 显示聊天界面*/
 			function checkin(data) {
