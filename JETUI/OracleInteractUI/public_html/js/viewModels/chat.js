@@ -73,7 +73,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 				//alert(loginimg);
 				if (uname) {
 					/*向服务端发送登录事件*/
-					socket.emit('login', { username: uname,userimg:loginimg});
+					socket.emit('login', { username: uname, userimg: loginimg });
 				} else {
 					alert('请输入昵称');
 				}
@@ -91,7 +91,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 
 			/*登录成功*/
 			socket.on('loginSuccess', function (data) {
-				//alert(data.loginimg);
+				//alert(data.userimg);
 				if (data.username === uname) {
 					checkin(data);
 				} else {
@@ -113,6 +113,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			/*接收消息*/
 			socket.on('receiveMessage', function (data) {
 				//$("#msgImg").attr('src', data.loginimg);
+				//alert(data.userimg);
 				showMessage(data);
 			});
 
@@ -135,7 +136,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 				var txt = $('#sendtxt').val();
 				$('#sendtxt').val('');
 				if (txt) {
-					socket.emit('sendMessage', { username: uname, message: txt });
+					socket.emit('sendMessage', { username: uname, message: txt, userimg: loginimg });
 				}
 			}
 
@@ -143,10 +144,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			function showMessage(data) {
 				var html;
 				if (data.username === uname) {
-					html = '<div class="chat-item item-right clearfix"><img id="msgImg" class="imgstyle fr" src="../../images/default_head_image.jpg" alt=""></img><span class="message fr">' + data.message + '</span></div>';
-					//alert(self.headimage());
+					//alert(data.userimg);
+					html = '<div class="chat-item item-right clearfix"><img id="msgImg" class="imgstyle fr" src='+data.userimg+'></img><span class="message fr">' + data.message + '</span></div>';
+					//$("#msgImg").attr('src', data.userimg);//alert(self.headimage());
 				} else {
-					html = '<div class="chat-item item-left clearfix rela"><img id="msgImg" class="imgstyle fl" src="../../images/default_head_image.jpg" alt=""></img><span class="abs uname">' + data.username + '</span><span class="img fl"></span><span class="fl message">' + data.message + '</span></div>';
+					html = '<div class="chat-item item-left clearfix rela"><img id="msgImg" class="imgstyle fl" src='+data.userimg+'></img><span class="message fl">' + data.message + '</span></div>';
 				}
 				$('.chat-con').append(html);
 				$('.chat-wrap').scrollTop($('.chat-wrap')[0].scrollHeight);
