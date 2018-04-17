@@ -12,32 +12,32 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputnumber'],
 
         this.lottery_down = function (headImage, nickName, number) {
             var nametxt = $('.slot');
-            console.log(nametxt);
+
             var nickNametxt = $('.name');
             var pcount = headImage.length - 1; //参加人数
-            console.log(pcount);
+
             var runing = $('#start').text() == "Start" ? true : false;
             var trigger = true;
             var num = 0;
             var Lotterynumber = number; //设置单次抽奖人数
             var count = Lotterynumber; //计数
             if (runing) {
-                console.log(runing);
-                if (pcount <= Lotterynumber) {
+               
+                if (Number(pcount+1) <= Lotterynumber) {
                     var tempNum = Number(pcount) + 1;
                     alert("There are only " + tempNum + " person. Please set lottery number smaller!");
                 } else {
                     runing = false;
                     $('#start').text('Stop');
-                    startNum(num)
+                    startNum()
                 }
             } else {
                 $('#start').text('Extracting(' + Lotterynumber + ')');
-                zd(num);
+                zd();
             }
 
 // 循环参加名单
-        function startNum(num) {
+        function startNum() {
             num = Math.floor(Math.random() * pcount);
             nametxt.css('background-image', 'url(' + headImage[num] + ')');
             nickNametxt.html(nickName[num]);
@@ -53,7 +53,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputnumber'],
 
 // 打印中奖人
 
-        function zd(num) {
+        function zd() {
             if (trigger) {
 
             trigger = false;
@@ -71,11 +71,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputnumber'],
                         i++;
                         Lotterynumber--;
 
-                var tempName = $('.slot').text();
-                console.log(tempName);
+                var tempName = $('.slot').html();
+                var tempNameStr = tempName.substring(tempName.indexOf(">")+1, tempName.lastIndexOf("<"));
                 var imageUrl = $('.slot').css('background-image');
                 var tempImage = imageUrl.substring(4, imageUrl.length - 1);
-                console.log(tempImage);
+                var tempImageStr = tempImage.substring(1, tempImage.length-1);
                         $('#start').text('Extracting(' + Lotterynumber + ')');
                         if (i == count) {
                             console.log("抽奖结束");
@@ -86,14 +86,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputnumber'],
                         }
 
         //打印中奖者名单
-                        $('.luck-user-list').prepend("<li><div class='portrait' style='background-image:url(" + tempImage + ")'></div><div class='luckuserName'>" + tempName + "</div></li>");
-                        $('.modality-list ul').append("<li><div class='luck-img' style='background-image:url(" + headImage[num] + ")'></div><p>" + nickName[num] + "</p></li>");
+                        $('.luck-user-list').prepend("<li><div class='portrait' style='background-image:url("+tempImageStr+")'></div><div class='luckuserName'>"+tempNameStr+"</div></li>");
+                        //$('.luck-user-list').prepend("<li><div class='portrait' style='background-image:url(" + tempImageStr + ")'></div><div class='luckuserName'>" + tempNameStr + "</div></li>");
+                        //$('.modality-list ul').append("<li><div class='luck-img' style='background-image:url(" + headImage[num] + ")'></div><p>" + nickName[num] + "</p></li>");
                         //将已中奖者从数组中"删除",防止二次中奖
-                        headImage.splice($.inArray(tempImage, headImage), 1);
-                        nickName.splice($.inArray(tempName, nickName), 1);
-                        console.log(num);
-                        console.log(tempName[num]);
-                        console.log(nickName);
+                        headImage.splice($.inArray(tempImageStr, headImage), 1);
+                        nickName.splice($.inArray(tempNameStr, nickName), 1);
+
         }
         }, 1000);
         }

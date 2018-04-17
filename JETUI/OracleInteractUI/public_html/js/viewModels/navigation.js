@@ -104,15 +104,16 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
         return 0;
     }, this);
     self.createChat = function(){
-        window.location.href = "http://localhost:8081/index.html?root=chat";
+        window.open("http://localhost:8081/index.html?root=chat");
         
     };
     self.createLottery = function(){
-        window.location.href = "http://localhost:8081/index.html?root=lottery";
+        window.open("http://localhost:8081/index.html?root=lottery");
     };
     
     self.createVote = function(){
-        window.location.href = "http://localhost:8081/index.html?root=vote";
+//        window.location.href = "http://localhost:8081/index.html?root=vote";
+        window.open("http://localhost:8081/index.html?root=vote");
     };
     }
 

@@ -23,7 +23,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                     'lottery': {label: 'Lottery'},
                     'vote': {label: 'Vote'},
                     'login': {label: 'Login', isDefault: true},
-                    'largeScreen': {label: 'LargeScreen'}
+                    'largescreen': {label: 'Largescreen'},
+                    'qrcode': {label: 'QrCode'}
                 });
                 oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
@@ -39,7 +40,9 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'},
                     {name: 'Lottery', id: 'lottery',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'},
-                    {name: 'LargeScreen', id: 'largeScreen',
+                    {name: 'Largescreen', id: 'largescreen',
+                        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'},
+                    {name: 'QrCode', id: 'qrcode',
                         iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'}
                 ];
                 self.navDataSource = new oj.ArrayTableDataSource(navData, {idAttribute: 'id'});
