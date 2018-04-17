@@ -45,7 +45,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 		} else {
 			$.ajaxSetup({ async: false });
 			//var url = "http://localhost:8081/userinfo/" + getParameterByName("id");		
-			var getUrl = "http://www.kanma.tunnel.echomod.cn/userinfo/" + getParameterByName("id");
+			var getUrl = "http://yayma.tunnel.echomod.cn/userinfo/"+getParameterByName("id");
+			//"http://www.kanma.tunnel.echomod.cn/userinfo/" + getParameterByName("id");
 			//$.getUrl()跨域问题的解决
 			$.getJSON(
 				"http://eezzo.com/API/CD",

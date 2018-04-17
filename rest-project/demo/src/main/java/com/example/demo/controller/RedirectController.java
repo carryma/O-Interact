@@ -138,7 +138,7 @@ public class RedirectController {
                             // openid, nickName, headImage, sex, country, province, city;
                             //1用户唯一标识
                             openid = userMessageJsonObject.getString("openid");
-                            frontUrl = "http://www.kanmaui.tunnel.echomod.cn/index.html?root=chat" + "&id=" + openid;
+                            frontUrl = "http://yaymatest2.tunnel.echomod.cn/index.html?root=chat" + "&id=" + openid;
                             //2用户昵称
                             nickName = userMessageJsonObject.getString("nickname");
                             //3headImage
@@ -193,7 +193,7 @@ public class RedirectController {
     @GetMapping("/chat")
     public void redirectChat(HttpServletResponse resp) throws Exception{
         logger.info("访问聊天界面");
-        resp.sendRedirect("http://yaymatest2.tunnel.echomod.cn/index.html?root=chat");
+        resp.sendRedirect(frontUrl);
     }
     @GetMapping("/test")
     public void redirectTest(HttpServletResponse resp) throws Exception{
