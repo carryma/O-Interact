@@ -1,15 +1,20 @@
 
 /*轮播*/
-.lb_gl{margin-bottom: 30px; background: url(../images/bg_3d.png);background-size: 100% 100%;max-height:100% ;}
+.lb_gl {
+    margin-bottom: 0%;
+    background: url(../images/bg_3d.png);
+	background-size: 100% 100%;
+	height: 88%;
+    max-height: 100% ;}
 .container{width: 1024px;margin:0 auto;position: relative;}
-.pictureSlider{height: 518px;margin-bottom: 24px;}
+.pictureSlider{margin-top:20%;height: 518px;margin-bottom: 24px;}
 .poster-item{background: #fff;height: 450px;width:336px;border-radius: 10px;padding:45px 23px 20px 23px;
 	transition: all 0.5s;cursor: default;
 	-moz-transition: all 0.5s;cursor: default;
 	-webkit-transition: all 0.5s;cursor: default;
 	-o-transition: all 0.5s;cursor: default;
 }
-.turn_3d{text-align: center;color: #fff;font-weight: 400;font-size: 36px;padding: 28px 0; position: absolute; top: 5%; bottom:5%; left:20%; right:20%;}
+.turn_3d{text-align: center;color: #fff;font-weight: 400;font-size: 36px;padding: 8% 0; position: absolute; top: 5%; bottom:5%; left:20%; right:20%;}
 .xxgy{font-size: 30px;font-weight: 900;padding-left: 10px;}
 .poster-item .say{font-size: 18px;margin-bottom: 5px;padding-left: 10px;}
 .students_star{padding:10px 10px 0 10px ;}
