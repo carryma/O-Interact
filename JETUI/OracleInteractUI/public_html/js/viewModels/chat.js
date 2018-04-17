@@ -73,7 +73,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 				//alert(loginimg);
 				if (uname) {
 					/*向服务端发送登录事件*/
-					socket.emit('login', { username: uname});
+					socket.emit('login', { username: uname,userimg:loginimg});
 				} else {
 					alert('请输入昵称');
 				}
