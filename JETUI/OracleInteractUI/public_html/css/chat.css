@@ -53,9 +53,11 @@
 /*登录界面*/
 
 .login-wrap {
-    background: #e7e7e7;
+    background: url(../images/chatuser_login_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     width: 100%;
-    height: 100%;
+    height: 90%;
     text-align: center;
 }
 
@@ -97,9 +99,10 @@
 .chat-wrap {
     display: block;
     width: 100%;
-    height: 95%;
+    height: 100%;
     overflow-y: scroll;
     background: url(../images/chat_bg.jpg);
+    background-size: 100% 100%;
     text-align: center;
 }
 
@@ -130,13 +133,13 @@
     bottom:0%;
     left: 0%;
     width: 100%;
-    height: 46px;
+    height: 60px;
     background:  #9d3650;
 }
 
 .bottom input {
     width: 80%;
-    height: 45px;
+    height: 100%;
     line-height: 45px;
     float: left;
     border:solid;
@@ -146,7 +149,7 @@
 
 .bottom button {
     width: 20%;
-    height: 45px;
+    height: 50px;
     float: right;
     border: none;
     background: #9d3650;
