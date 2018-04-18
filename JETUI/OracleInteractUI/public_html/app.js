@@ -31,6 +31,7 @@ io.on('connection', function (socket) {
 	var userimg = null ;
 	/*监听登录*/
 	socket.on('login',function(data){
+		//console.log(data.userimg);
 		for(var i=0;i<users.length;i++){
 	        if(users[i].username === data.username){
 	          	isNewPerson = false;
@@ -40,11 +41,15 @@ io.on('connection', function (socket) {
 	        }
 	    }
 	    if(isNewPerson){
-	        username = data.username;
+					username = data.username;
+					userimg = data.userimg;
+				//	alert(userimg);
 	        users.push({
-	          username:data.username
+						username:data.username,
+						userimg:data.loginimg
 	        });
-	        /*登录成功*/
+					/*登录成功*/
+			  	//console.log(data);
 	        socket.emit('loginSuccess',data);
 	        /*向所有连接的客户端广播add事件*/
 	        io.sockets.emit('add',data);
