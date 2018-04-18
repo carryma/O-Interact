@@ -9,11 +9,12 @@ import static com.example.demo.util.UserInfoUtil.getCode;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		String REDIRECT_URI = "http://www.kanma.tunnel.echomod.cn/url";
+		String REDIRECT_URI = "http://yayma.tunnel.echomod.cn/url";
 		//String SCOPE = "snsapi_base"; // snsapi_userinfo // snsapi_base
 		String SCOPE = "snsapi_userinfo";
 		//appId
-		String appId = "wxe634435c58769578";
+		String appId ="wxabe14a0c6c57dec9";
+				//"wxe634435c58769578";
 
 		String getCodeUrl = getCode(appId, REDIRECT_URI, SCOPE);
 		System.out.println("getCodeUrl:"+getCodeUrl);

@@ -10,9 +10,7 @@ import com.example.demo.util.UserInfoUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,12 +23,16 @@ import java.util.ArrayList;
  * @create 2018-04-01 16:21
  **/
 @RestController
+@RequestMapping ("/url")
 public class RedirectController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private static final String WX_APPID = "wxe634435c58769578";
-    private static final String WX_APPSECRET = "9cbe7b9611a722b87980ca9d8022627f";
+    private static final String WX_APPID = "wxabe14a0c6c57dec9";
+            //"wxe634435c58769578";
+    private static final String WX_APPSECRET = "0bc68bafddf7ce66f6fd7b68a6718db2";
+                    //"9cbe7b9611a722b87980ca9d8022627f";
+    private static ArrayList<String> list = new ArrayList<>();
     private String frontUrl;
 
     @Autowired
@@ -47,7 +49,8 @@ public class RedirectController {
      * @param state 重定向状态参数
      * @return String
      */
-    @GetMapping("/url")
+
+    @ModelAttribute
     public void wecahtLogin(@RequestParam(name = "code", required = false) String code,
                             @RequestParam(name = "state") String state, HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
@@ -70,14 +73,14 @@ public class RedirectController {
             String country;
             String province;
             String city;
-           // String REDIRECT_URI = "http://www.kanma.ngrok.xiaomiqiu.cn/url";
+ /*          // String REDIRECT_URI = "http://www.kanma.ngrok.xiaomiqiu.cn/url";
             String REDIRECT_URI = "http://www.kanma.tunnel.echomod.cn/url";
             String SCOPE = "snsapi_userinfo";
             // String SCOPE = "snsapi_base";
 
             String getCodeUrl = UserInfoUtil.getCode(APPID, REDIRECT_URI, SCOPE);
             logger.info("第一步:用户授权, get Code URL:{}", getCodeUrl);
-
+*/
             // 替换字符串，获得请求access token URL
             String tokenUrl = UserInfoUtil.getWebAccess(APPID, SECRET, CODE);
             logger.info("第二步:get Access Token URL:{}", tokenUrl);
@@ -135,7 +138,7 @@ public class RedirectController {
                             // openid, nickName, headImage, sex, country, province, city;
                             //1用户唯一标识
                             openid = userMessageJsonObject.getString("openid");
-                            frontUrl = "http://www.kanmaui.tunnel.echomod.cn/index.html?root=chat" + "&id=" + openid;
+                            frontUrl = "http://yaymatest2.tunnel.echomod.cn/index.html?root=chat" + "&id=" + openid;
                             //2用户昵称
                             nickName = userMessageJsonObject.getString("nickname");
                             //3headImage
@@ -150,10 +153,7 @@ public class RedirectController {
                             //7city
                             city = userMessageJsonObject.getString("city");
 
-                            if (null != weChatUserService.findWeChatUserId(openid)) {
-                                logger.info("微信用户信息已存在");
 
-                            } else {
                                 WeChatUser weChatUser = new WeChatUser();
                                 weChatUser.setOpenId(openid);
                                 weChatUser.setNickname(nickName);
@@ -162,20 +162,18 @@ public class RedirectController {
                                 weChatUser.setCountry(country);
                                 weChatUser.setProvince(province);
                                 weChatUser.setCity(city);
-                                ArrayList<String> list = new ArrayList<>();
+                            logger.error("获取用户信息失败-------------");
+                            logger.info("list",list);
                                 if (!list.contains(openid)) {
-                                    list.add(openid);
                                     weChatUserService.insertWeChatUser(weChatUser);
-
-
+                                    list.add(openid);
                                     logger.info("插入微信用户信息数据成功");
                                     logger.info("用户昵称:{}", nickName);
                                     logger.info("用户性别:{}", sex);
                                     logger.info("OpenId:{}", openid);
+                                }else{
+                                    logger.info("微信用户信息已存在");
                                 }
-
-                            }
-
                         } catch (JSONException e) {
                             logger.error("获取用户信息失败");
                         }
@@ -185,10 +183,24 @@ public class RedirectController {
                 }
             }
         }
-        // frontUrl = "http://www.kanmaui.ngrok.xiaomiqiu.cn/index.html?root=chat"+ "id=" + openId;
+    /*     frontUrl = "http://www.kanmaui.ngrok.xiaomiqiu.cn/index.html?root=chat"+ "id=" + openId;
         logger.info("访问聊天界面");
         logger.info("跳转的前端地址:{}", frontUrl);
         resp.sendRedirect(frontUrl);
-
+    */
     }
+
+    @GetMapping("/chat")
+    public void redirectChat(HttpServletResponse resp) throws Exception{
+        logger.info("访问聊天界面");
+        resp.sendRedirect(frontUrl);
+    }
+    @GetMapping("/test")
+    public void redirectTest(HttpServletResponse resp) throws Exception{
+        logger.info("访问测试界面");
+        resp.sendRedirect("http://baidu.com");
+    }
+
+
+
 }

@@ -3,9 +3,13 @@ package com.example.demo.controller;
 import com.example.demo.entity.WeChatUser;
 import com.example.demo.service.WeChatUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 根据openid发送get请求，获取对应数据库中的记录，以json格式发送
@@ -29,5 +33,15 @@ public class WeChatUserInfoController {
             System.out.println("异常信息： " + e.getMessage());
         }
         return userinfo;
+    }
+    @GetMapping("/all")
+    public List<WeChatUser> getAll(){
+        List<WeChatUser> allinfo = new ArrayList<WeChatUser>();
+        try{
+            allinfo = weChatUserService.findAllInfo();
+        }catch(Exception e){
+
+        }
+        return allinfo;
     }
 }

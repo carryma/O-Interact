@@ -6,6 +6,8 @@ import com.example.demo.service.WeChatUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * WeChat User Service Implement 业务逻辑层
  *
@@ -32,6 +34,10 @@ public class WeChatUserServiceImpl implements WeChatUserService {
     @Override
     public WeChatUser findWechatUserByOpenId(String weChatOpenId) {
         return weChatUserDao.findWechatUserByOpenId(weChatOpenId);
+    }
+    @Override
+    public List<WeChatUser> findAllInfo(){
+        return weChatUserDao.findAllInfo();
     }
 
 }

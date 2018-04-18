@@ -1,6 +1,5 @@
 CREATE TABLE wechat_user(
-  id INT primary key,
-  open_id VARCHAR(50) NOT NULL ,
+  open_id VARCHAR(50) NOT NULL primary key,
   nickname VARCHAR(100) NOT NULL ,
   head_img_url VARCHAR(100) NOT NULL ,
   sex INT(1) NOT NULL ,

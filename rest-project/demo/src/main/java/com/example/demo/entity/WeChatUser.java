@@ -1,5 +1,8 @@
 package com.example.demo.entity;
 
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -8,7 +11,7 @@ import java.util.Date;
  * @author Ma Kang
  * @create 2018-04-01 20:24
  **/
-public class WeChatUser {
+public class WeChatUser  {
     //用户的唯一标识
     private String openId;
     // 昵称
@@ -89,6 +92,7 @@ public class WeChatUser {
 /*    public Date getCreateTime() {
         return createTime;
     }*/
+
 
     @Override
     public String toString() {
