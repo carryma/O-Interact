@@ -46,7 +46,7 @@ io.on('connection', function (socket) {
 			//	alert(userimg);
 			users.push({
 				username: data.username,
-				userimg: data.loginimg
+				userimg: data.userimg			
 			});
 			/*登录成功*/
 			socket.emit('loginSuccess', data);

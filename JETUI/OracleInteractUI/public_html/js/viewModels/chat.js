@@ -79,7 +79,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 					alert('请输入昵称');
 				}
 			});
-			$(document).keydown(function (event) {
+			$('#loginName').keydown(function (event) {
 				if (event.keyCode === 13) {
 					uname = $.trim($('#loginName').val());
 					//loginimg = $.trim($('#loginImg')[0].src);
@@ -98,7 +98,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			$('.sendBtn').click(function () {
 				sendMessage();
 			});
-			$(document).keydown(function (event) {
+			$("#sendtxt").keydown(function (event) {
 				if (event.keyCode === 13) {
 					sendMessage();
 				}
