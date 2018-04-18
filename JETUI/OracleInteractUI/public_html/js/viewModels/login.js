@@ -3,7 +3,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
         var self = this;
         self.submitInput = function () {
             var userName = $("#username").val();
-            if (userName !== null && userName === "kanma") {
+            if (userName !== null && userName === "admin") {
               window.location.href = "http://localhost:8081/index.html?root=navigation";
 			  //window.location.href = "http://www.kanmaui.tunnel.echomod.cn/index.html?root=customers";
             } else {
