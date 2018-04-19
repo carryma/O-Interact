@@ -24,7 +24,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
                 'vote': { label: 'Vote' },
                 'login': { label: 'Login', isDefault: true },
                 'largescreen': { label: 'Largescreen' },
-                'qrcode': { label: 'QrCode' }
+                'qrcode': { label: 'QrCode' },
+                'checkin':{ label:'Checkin'}
             });
             oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
