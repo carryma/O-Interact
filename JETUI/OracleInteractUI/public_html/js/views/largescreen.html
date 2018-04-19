@@ -3,60 +3,63 @@
  The Universal Permissive License (UPL), Version 1.0
  -->
 
- <style>  
-    *{margin:0;padding:0;}  
-  
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
     @keyframes mymove {
-        from { 
-            left: 800px; 
+        from {
+            left: 800px;
         }
-        to { 
+        to {
             left: -800px;
         }
     }
-    
+
     .move {
         animation: mymove 10s linear 1;
     }
-    
-    #barrage{  
-        margin-top:3%;
-        position:relative;  
-        width:100%;  
-        height:85%;  
-        background:#fff;  
-        border:2px solid #ffcc00;
+
+    #barrage {
+        background: url(../images/chat_bg.jpg);
+        background-size: 100% 100%;
+        margin-top: 3%;
+        position: relative;
+        width: 100%;
+        height: 85%;
+        border: 5px solid #ffcc00;
         overflow: hidden;
-    }  
-  
-    #barrage div{  
-        width:100%;  
-        height:20px;  
-        line-height:20px;  
-        position:absolute;  
-    }  
-  
+    }
+
+    #barrage div {
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        position: absolute;
+    }
+
     #qr {
         position: absolute;
         left: 10px;
         top: 200px;
     }
+
     #qr img {
-        height: 400px;
-        width: 400px;
+        height: 300px;
+        width: 300px;
     }
-  </style>  
+</style>
+
 <div id="screen" class="chat-wrap">
-    <div id="barrage"></div>  
-
-  
-  <div id="qr">
-      <img src="images/QR_code_mix.png"/>
-  </div>
-  </div>
-
- 
- 
- 
- 
- 
+    <div id="barrage">
+        <button class="btn" on-click='[[redirectToChat]]'>Chat Room</button>
+        <span>
+            <button class="btn" onclick="window.location.href='#'">Large Screen</button>
+        </span>
+    </div>
+    <div id="qr">
+        <img src="images/QR_code_mix.png" />
+    </div>
+</div>
