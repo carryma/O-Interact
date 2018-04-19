@@ -35,7 +35,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 		var self = this;
 		self.nickname = ko.observable();
 		self.headimage = ko.observable();
-		self.number =ko.observable(0);
+		// self.number =ko.observable(0);
 		//alert(getParameterByName("id"));
 
 		/*电脑用户获取"Administrator",微信用户自动使用昵称和头像登陆*/
