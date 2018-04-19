@@ -201,7 +201,7 @@ public class RedirectController {
     public String redirectCheck() throws Exception{
 //        logger.info("访问checkin界面");
 //        resp.sendRedirect(checkUrl);
-        return "Welcome";
+        return "Sign Successfully!";
     }
     @GetMapping("/test")
     public void redirectTest(HttpServletResponse resp) throws Exception{

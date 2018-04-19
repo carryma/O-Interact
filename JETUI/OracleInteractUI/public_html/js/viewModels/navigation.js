@@ -111,9 +111,9 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
         window.open("http://localhost:8081/index.html?root=lottery");
     };
     
-    self.createVote = function(){
+    self.createSignin = function(){
 //        window.location.href = "http://localhost:8081/index.html?root=vote";
-        window.open("http://localhost:8081/index.html?root=vote");
+        window.open("http://localhost:8081/index.html?root=checkin");
     };
     }
 

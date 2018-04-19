@@ -22,9 +22,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io'],
                 window.location.href = "http://localhost:8081/index.html?root=lottery";
 
             };
-            self.vote = function () {
+            self.sign = function () {
 
-
+                window.open("http://localhost:8081/index.html?root=checkin");
             };
 
             $(function () {
