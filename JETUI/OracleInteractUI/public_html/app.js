@@ -50,10 +50,10 @@ io.on('connection', function (socket) {
 			});
 			/*登录成功*/
 			socket.emit('loginSuccess', data);
-			/*在线人数*/
-			io.sockets.emit('system', { user: username, num: users.length, type: 'login' });
-			/*向所有连接的客户端广播add事件*/
-			io.sockets.emit('add', data);
+			// /*在线人数*/
+			// io.sockets.emit('system', { user: username, num: users.length, type: 'login' });
+			// /*向所有连接的客户端广播add事件*/
+			// io.sockets.emit('add', data);
 
 		} else {
 			/*登录失败*/
@@ -79,7 +79,7 @@ io.on('connection', function (socket) {
 
 		/*向所有连接的客户端广播leave事件*/
 		//			io.sockets.emit('leave',username);
-		io.sockets.emit('system', { user: username, num: users.length, type: 'logout' });
+		// io.sockets.emit('system', { user: username, num: users.length, type: 'logout' });
 	});
 
 	// socket.on('onlinenum',function(){

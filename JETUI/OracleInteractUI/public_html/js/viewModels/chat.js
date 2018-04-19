@@ -140,13 +140,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			// 		$('.chat-con').append(html);
 			// 	}
 			// });
-			socket.on('leave', function (name) {
-				if (name !== null) {
-					var html = '<p>' + name + '已退出群聊</p>' + '<br>';
-					$('.chat-con').append(html);
-				//	document.getElementById('#status').innerHTML=number +'users online';
-				}
-			});
+			// socket.on('leave', function (name) {
+			// 	if (name !== null) {
+			// 		var html = '<p>' + name + '已退出群聊</p>' + '<br>';
+			// 		$('.chat-con').append(html);
+			// 	//	document.getElementById('#status').innerHTML=number +'users online';
+			// 	}
+			// });
 			// socket.on('system', function (name,count) {
 			// 	if (name !== null) {
 			// 		var html = '<p>' + name + '已退出群聊</p>' + '<br>';
@@ -161,13 +161,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			// 		$('#status').append(test);
 			// });
 
-			socket.on('system',function(date){
-				var msg= '<p>'+'System: '+ date.user + (date.type=='login'? ' joined':' left')+'</p>'+'<br>';
-				var test ='<p>'+date.num +'users online</p>';
-				self.number(date.num);
-				$('.chat-con').append(msg);
-				//document.getElementById('#status').innerHTML=date.num;
-			});
+			// socket.on('system',function(date){
+			// 	var msg= '<p>'+'System: '+ date.user + (date.type=='login'? ' joined':' left')+'</p>'+'<br>';
+			// 	var test ='<p>'+date.num +'users online</p>';
+			// 	self.number(date.num);
+			// 	$('.chat-con').append(msg);
+			// 	//document.getElementById('#status').innerHTML=date.num;
+			// });
 
 
 			/*隐藏登录界面 显示聊天界面*/

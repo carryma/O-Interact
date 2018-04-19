@@ -34,6 +34,7 @@ public class RedirectController {
                     //"9cbe7b9611a722b87980ca9d8022627f";
     private static ArrayList<String> list = new ArrayList<>();
     private String frontUrl;
+    private String checkUrl;
 
     @Autowired
     WeChatUserService weChatUserService;
@@ -139,6 +140,7 @@ public class RedirectController {
                             //1用户唯一标识
                             openid = userMessageJsonObject.getString("openid");
                             frontUrl = "http://yaymatest2.tunnel.echomod.cn/index.html?root=chat" + "&id=" + openid;
+                            checkUrl = "http://yaymatest2.tunnel.echomod.cn/index.html?root=checkin";
                             //2用户昵称
                             nickName = userMessageJsonObject.getString("nickname");
                             //3headImage
@@ -192,8 +194,14 @@ public class RedirectController {
 
     @GetMapping("/chat")
     public void redirectChat(HttpServletResponse resp) throws Exception{
-        logger.info("访问聊天界面");
+        logger.info("访问checkin界面");
         resp.sendRedirect(frontUrl);
+    }
+    @GetMapping("/checkin")
+    public String redirectCheck() throws Exception{
+//        logger.info("访问checkin界面");
+//        resp.sendRedirect(checkUrl);
+        return "Welcome";
     }
     @GetMapping("/test")
     public void redirectTest(HttpServletResponse resp) throws Exception{
