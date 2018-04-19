@@ -202,9 +202,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			}
 
 		});
-
-
 	}
-
 	return chatContentViewModel;
 });
