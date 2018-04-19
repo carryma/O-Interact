@@ -42,15 +42,44 @@
 
     #qr {
         position: absolute;
-        left: 10px;
+       
         top: 200px;
     }
 
     #qr img {
-        height: 300px;
-        width: 300px;
+        position: absolute;
+        height: 250px;
+        width: 250px;
     }
-</style>
+     button {  
+        width: 200px;  
+        padding:8px;  
+        background-color: lightcoral;  
+        border-color: #357ebd;  
+        color: #fff;  
+        -moz-border-radius: 10px;  
+        -webkit-border-radius: 10px;  
+        border-radius: 10px; /* future proofing */  
+        -khtml-border-radius: 10px; /* for old Konqueror browsers */  
+        text-align: center;  
+        vertical-align: middle;  
+        border: 1px solid transparent;  
+        font-weight: 900;  
+        font-size:125%  
+      }  
+  </style>  
+<div id="screen" class="chat-wrap">
+    <div id="barrage"></div>  
+ 
+    
+    <div id="qr">
+      <img src="images/QR_code_mix.png"/>
+  </div>
+    <br></br>
+    <button data-bind="click: toChatroom">Chatroom</button>
+     <button data-bind="click: lottery">Lottery</button>
+     <button data-bind="click: vote">Vote</button>
+  </div>
 
 <div id="screen" class="chat-wrap">
     <div id="barrage">
