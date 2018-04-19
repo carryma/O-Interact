@@ -143,7 +143,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 			socket.on('leave', function (name) {
 				if (name !== null) {
 					var html = '<p>' + name + '已退出群聊</p>' + '<br>';
-					$('.chat-con').append(html);
+				//	$('.chat-con').append(html);
 				//	document.getElementById('#status').innerHTML=number +'users online';
 				}
 			});
@@ -165,7 +165,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 				var msg= '<p>'+'System: '+ date.user + (date.type=='login'? ' joined':' left')+'</p>'+'<br>';
 				var test ='<p>'+date.num +'users online</p>';
 				self.number(date.num);
-				$('.chat-con').append(msg);
+				//$('.chat-con').append(msg);
 				//document.getElementById('#status').innerHTML=date.num;
 			});
 
