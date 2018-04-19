@@ -18,14 +18,14 @@
     .move {
         animation: mymove 10s linear 1;
     }
-    
+ 
     #barrage{  
         background: url(images/bg_3d.png);
         margin:auto;  
         margin-top:3%;
         position:relative;  
-        width:1200px;  
-        height:750px;  
+        width:900px;  
+        height:770px;  
         background:#fff;  
         border:2px solid #ffcc00;
         overflow: hidden;
@@ -40,21 +40,42 @@
   
     #qr {
         position: absolute;
-        left: 10px;
+       
         top: 200px;
     }
     #qr img {
-        height: 400px;
-        width: 400px;
+        position: absolute;
+        height: 200px;
+        width: 200px;
     }
+     button {  
+        width: 200px;  
+        padding:8px;  
+        background-color: lightcoral;  
+        border-color: #357ebd;  
+        color: #fff;  
+        -moz-border-radius: 10px;  
+        -webkit-border-radius: 10px;  
+        border-radius: 10px; /* future proofing */  
+        -khtml-border-radius: 10px; /* for old Konqueror browsers */  
+        text-align: center;  
+        vertical-align: middle;  
+        border: 1px solid transparent;  
+        font-weight: 900;  
+        font-size:125%  
+      }  
   </style>  
 <div id="screen" class="chat-wrap">
     <div id="barrage"></div>  
-
-  
-  <div id="qr">
+ 
+    
+    <div id="qr">
       <img src="images/QR_code_mix.png"/>
   </div>
+    <br></br>
+    <button data-bind="click: toChatroom">Chatroom</button>
+     <button data-bind="click: lottery">Lottery</button>
+     <button data-bind="click: vote">Vote</button>
   </div>
 
  

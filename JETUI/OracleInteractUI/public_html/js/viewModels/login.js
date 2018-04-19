@@ -10,7 +10,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
                 $("#mymodal").modal("toggle");
             }
             //  var getUrl = "http://yayma.tunnel.echomod.cn/userinfo/all";
-            var getUrl = "http://localhost:8081/customer/check";
+            var getUrl = "http://localhost:80/customer/check";
             //var getUrl = "css/userinfo/userinfo.json";
             $.ajax(
                 {
@@ -20,9 +20,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
                     dataType: "json",
                     contentType: "application/json",
                    success: function(result) {
-                        alert(result);
+                       // alert(result);
                         if (result == 1) {
-                            window.location.href = "http://localhost:8082/index.html?root=navigation";
+                            window.location.href = "http://localhost:8081/index.html?root=navigation";
                             //window.location.href = "http://www.kanmaui.tunnel.echomod.cn/index.html?root=customers";
                         } else if (username === "" || username === null) {
                             $("#mymodal").modal("toggle");
@@ -46,7 +46,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
             // alert(JSON.stringify(str));
             $.ajax(
                 {
-                    url: "http://localhost:8081/customer/save",
+                    url: "http://localhost:80/customer/save",
                     type: "POST",
                     data: JSON.stringify(str),
                     dataType: "json",

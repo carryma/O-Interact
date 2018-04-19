@@ -14,6 +14,19 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io'],
      */
     function largeScreenContentViewModel() {
         var self = this;
+         self.toChatroom = function(){
+        window.location.href = "http://localhost:8081/index.html?root=chat";
+  
+    };
+     self.lottery = function(){
+        window.location.href = "http://localhost:8081/index.html?root=lottery";
+  
+    };
+    self.vote = function(){
+        
+  
+    };
+        
         $(function () {
         function randomColor(){//随机颜色  
             var color=Math.ceil(Math.random()*16777215).toString(16);  
@@ -25,10 +38,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io'],
         
         var socket = io();
 	socket.on('receiveMessage', function (data) {
-                var node = $('<div class=move>'+data.message+'</div>')
-                node.css('top', Math.random()*400+"px");
+                var node = $('<div class=move><img id="msgImg"  style=" width: 70px; height: 70px;" src='+data.userimg+'> </img><span id="sp" style ="border:4px solid; ">' + data.message + '</span></div>');
+                node.css('top', parseInt(10*Math.random())*70+"px");
+                console.log(parseInt(10*Math.random()));
                 node.css('color', "#"+randomColor());
-                node.css('font-size',"24px");
+                node.css('font-size',"50px");
+                $("#sp").css('border', "#"+randomColor());
                 node.bind('animationend', function(event) {
                     $(event.target).remove();
                 });
