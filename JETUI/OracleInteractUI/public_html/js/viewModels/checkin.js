@@ -11,6 +11,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
     function CheckinViewModel() {
       var self = this;
       var getUrl = "http://yayma.tunnel.echomod.cn/userinfo/all";
+      self.count = ko.observable();
       //var getUrl = "css/userinfo/userinfo.json";
       $.getJSON(
         //type: "GET", //请求方式
@@ -20,7 +21,8 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
         //success: function (result) {//返回的参数就是 action里面所有的有get和set方法的参数 
         { url: encodeURI(getUrl) },
         function (result) {
-          console.log(nametxt);
+          console.log(result);
+          self.count(result.length);
           //nametxt.css('background-image', 'url(' + headImage[0] + ')');
           // nickNametxt.html(nickName[0]);
         }
