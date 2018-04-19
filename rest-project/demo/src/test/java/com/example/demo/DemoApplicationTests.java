@@ -1,7 +1,11 @@
 package com.example.demo;
 
+import com.example.demo.dao.CustomerDao;
+import com.example.demo.dao.daoimpl.CustomerDaoImpl;
+import com.example.demo.entity.Customer;
 import com.example.demo.entity.LoggerTest;
 import com.example.demo.entity.WeChatUser;
+import com.example.demo.service.CustomerService;
 import com.example.demo.service.WeChatUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +21,8 @@ public class DemoApplicationTests {
     @Autowired
     WeChatUserService weChatUserService;
 
+    @Autowired
+    CustomerService customerService;
 
     @Test
     public void queryWeChatUserByOpenId() {
@@ -41,6 +47,20 @@ public class DemoApplicationTests {
         System.out.println(list.get(0));
         System.out.println(list);
 
+
+    }
+
+    @Test
+    public void testData(){
+        Customer customerc=new Customer();
+
+       customerc.setUsername("yayma");
+      customerc.setPassword("yayma");
+        int a = customerService.checkData(customerc);
+        System.out.println(a);
+//        aaa.check();
+//        int a = customerService.checkData(customerc);
+//        System.out.println(a);
 
     }
 

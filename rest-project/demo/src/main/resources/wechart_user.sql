@@ -9,3 +9,10 @@ CREATE TABLE wechat_user(
   createtime DATETIME NOT NULL ,
   modifytime TIMESTAMP
 );
+
+CREATE TABLE customer
+(
+  id int  primary key auto_increment,
+  name varchar(100) not null;
+  password varchar(100) not null;
+);
