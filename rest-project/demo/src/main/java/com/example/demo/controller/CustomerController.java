@@ -3,13 +3,9 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Customer;
 import com.example.demo.service.CustomerService;
-import com.example.demo.service.WeChatUserService;
-import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/customer")

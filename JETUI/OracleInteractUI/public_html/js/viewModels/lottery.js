@@ -110,15 +110,15 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputnumber'],
             $(function () {
                 nametxt = $('.slot');
                 nickNametxt = $('.name');
-                var getUrl = "http://yayma.tunnel.echomod.cn/userinfo/all";
+                var getUrl = "http://localhost:80/userinfo/all";
                 //var getUrl = "css/userinfo/userinfo.json";
                 $.getJSON(
                     //type: "GET", //请求方式
                     //地址，就是json文件的请求路径
                     //dataType: "json", //数据类型可以为 text xml json  script  jsonp
-                    "http://eezzo.com/API/CD",
+                   // "http://eezzo.com/API/CD",
                     //success: function (result) {//返回的参数就是 action里面所有的有get和set方法的参数 
-                    { url: encodeURI(getUrl) },
+                    getUrl ,
                     function (result) {
                         put_info(result);
                         $(function () {

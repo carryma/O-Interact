@@ -9,8 +9,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
 
                 $("#mymodal").modal("toggle");
             }
-            //  var getUrl = "http://yayma.tunnel.echomod.cn/userinfo/all";
-            var getUrl = "http://yayma.tunnel.echomod.cn/customer/check";
+           // var getUrl = "http://yayma.tunnel.echomod.cn/customer/check";
+           var getUrl = "http://localhost:80/customer/check";
             //var getUrl = "css/userinfo/userinfo.json";
             $.ajax(
                 {
@@ -48,7 +48,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
             // alert(JSON.stringify(str));
             $.ajax(
                 {
-                    url: "http://yayma.tunnel.echomod.cn/customer/save",
+                   // url: "http://yayma.tunnel.echomod.cn/customer/save",
+                    url: "http://localhost:80/customer/save",
                     type: "POST",
                     data: JSON.stringify(str),
                     dataType: "json",

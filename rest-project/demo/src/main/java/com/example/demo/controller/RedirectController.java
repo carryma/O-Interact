@@ -23,16 +23,14 @@ import java.util.ArrayList;
  * @create 2018-04-01 16:21
  **/
 @RestController
-@RequestMapping ("/url")
+@RequestMapping("/url")
 public class RedirectController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private static final String WX_APPID = "wxabe14a0c6c57dec9";
-            //"wxe634435c58769578";
-    private static final String WX_APPSECRET = "0bc68bafddf7ce66f6fd7b68a6718db2";
-                    //"9cbe7b9611a722b87980ca9d8022627f";
-    private static ArrayList<String> list = new ArrayList<>();
+    private static final String WX_APPID = "wxe634435c58769578";
+    private static final String WX_APPSECRET = "9cbe7b9611a722b87980ca9d8022627f";
+   // private static ArrayList<String> list = new ArrayList<>();
     private String frontUrl;
     private String checkUrl;
 
@@ -92,15 +90,6 @@ public class RedirectController {
             JSONObject jsonObject = JSON.parseObject(response);
             logger.info("请求到的Access Token:{}", jsonObject.toJSONString());
 
-//            {
-//                "access_token":"ACCESS_TOKEN",
-//                "expires_in":7200,
-//                "refresh_token":"REFRESH_TOKEN",
-//                "openid":"OPENID",
-//                "scope":"SCOPE",
-//                "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-//            }
-
             if (null != jsonObject) {
                 try {
 
@@ -119,28 +108,14 @@ public class RedirectController {
                     JSONObject userMessageJsonObject = JSON.parseObject(userMessageResponse);
 
                     logger.info("用户信息:{}", userMessageJsonObject.toJSONString());
-//                    {
-//                        "openid":" OPENID",
-//                        "nickname": NICKNAME,
-//                        "sex":"1",
-//                        "province":"PROVINCE"
-//                        "city":"CITY",
-//                        "country":"COUNTRY",
-//                        "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MoCfHe/46",
-//                        "privilege":[
-//                              "PRIVILEGE1"
-//                              "PRIVILEGE2"
-//                        ],
-//                        "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-//                    }
 
                     if (userMessageJsonObject != null) {
                         try {
                             // openid, nickName, headImage, sex, country, province, city;
                             //1用户唯一标识
                             openid = userMessageJsonObject.getString("openid");
-                            frontUrl = "http://yaymatest2.tunnel.echomod.cn/index.html?root=chat" + "&id=" + openid;
-                            checkUrl = "http://yaymatest2.tunnel.echomod.cn/index.html?root=checkin";
+                            frontUrl = "http://kanmaui.tunnel.echomod.cn/index.html?root=chat" + "&id=" + openid;
+                            checkUrl = "http://kanmaui.tunnel.echomod.cn/index.html?root=checkin";
                             //2用户昵称
                             nickName = userMessageJsonObject.getString("nickname");
                             //3headImage
@@ -155,7 +130,7 @@ public class RedirectController {
                             //7city
                             city = userMessageJsonObject.getString("city");
 
-
+                            if (weChatUserService.findWechatUserByOpenId(openid) == null) {
                                 WeChatUser weChatUser = new WeChatUser();
                                 weChatUser.setOpenId(openid);
                                 weChatUser.setNickname(nickName);
@@ -164,18 +139,16 @@ public class RedirectController {
                                 weChatUser.setCountry(country);
                                 weChatUser.setProvince(province);
                                 weChatUser.setCity(city);
-                            logger.error("获取用户信息失败-------------");
-                            logger.info("list",list);
-                                if (!list.contains(openid)) {
-                                    weChatUserService.insertWeChatUser(weChatUser);
-                                    list.add(openid);
-                                    logger.info("插入微信用户信息数据成功");
-                                    logger.info("用户昵称:{}", nickName);
-                                    logger.info("用户性别:{}", sex);
-                                    logger.info("OpenId:{}", openid);
-                                }else{
-                                    logger.info("微信用户信息已存在");
-                                }
+
+                                weChatUserService.insertWeChatUser(weChatUser);
+                                logger.info("插入微信用户信息数据成功");
+                                logger.info("用户昵称:{}", nickName);
+                                logger.info("用户性别:{}", sex);
+                                logger.info("OpenId:{}", openid);
+
+                            } else {
+                                logger.info("微信用户信息已存在");
+                            }
                         } catch (JSONException e) {
                             logger.error("获取用户信息失败");
                         }
@@ -185,30 +158,26 @@ public class RedirectController {
                 }
             }
         }
-    /*     frontUrl = "http://www.kanmaui.ngrok.xiaomiqiu.cn/index.html?root=chat"+ "id=" + openId;
-        logger.info("访问聊天界面");
-        logger.info("跳转的前端地址:{}", frontUrl);
-        resp.sendRedirect(frontUrl);
-    */
     }
 
     @GetMapping("/chat")
-    public void redirectChat(HttpServletResponse resp) throws Exception{
-        logger.info("访问checkin界面");
+    public void redirectChat(HttpServletResponse resp) throws Exception {
+        logger.info("访问chatroom界面:{}",frontUrl);
         resp.sendRedirect(frontUrl);
     }
+
     @GetMapping("/checkin")
-    public String redirectCheck() throws Exception{
+    public String redirectCheck() throws Exception {
 //        logger.info("访问checkin界面");
 //        resp.sendRedirect(checkUrl);
         return "Sign Successfully!";
     }
+
     @GetMapping("/test")
-    public void redirectTest(HttpServletResponse resp) throws Exception{
+    public void redirectTest(HttpServletResponse resp) throws Exception {
         logger.info("访问测试界面");
         resp.sendRedirect("http://baidu.com");
     }
-
 
 
 }
