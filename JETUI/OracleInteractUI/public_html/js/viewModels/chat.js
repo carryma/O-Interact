@@ -13,6 +13,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'socket.io', 'ojs/ojknockout', 'ojs/
 	 * The view model for the main content view template
 	 */
 	function chatContentViewModel() {
+            var self = this;
+            self.count = ko.observable(0);
 
 		function getParameterByName(paramName) {
 			var args = new Object();
